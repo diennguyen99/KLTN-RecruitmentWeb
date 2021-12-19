@@ -1,0 +1,17 @@
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\UteJob.Infrastructure.Shared.deps.json
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\UteJob.Infrastructure.Shared.dll
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\ref\UteJob.Infrastructure.Shared.dll
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\UteJob.Infrastructure.Shared.pdb
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\UteJob.Application.dll
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\UteJob.Domain.dll
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\UteJob.Application.pdb
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\bin\Debug\net5.0\UteJob.Domain.pdb
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.csproj.AssemblyReference.cache
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.GeneratedMSBuildEditorConfig.editorconfig
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.AssemblyInfoInputs.cache
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.AssemblyInfo.cs
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.csproj.CoreCompileInputs.cache
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.csproj.CopyComplete
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.dll
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\ref\UteJob.Infrastructure.Shared.dll
+E:\UteJob\UteJob\UteJob.Infrastructure.Shared\obj\Debug\net5.0\UteJob.Infrastructure.Shared.pdb

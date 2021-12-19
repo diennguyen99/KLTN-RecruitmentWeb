@@ -1,0 +1,12 @@
+E:\UteJob\UteJob\UteJob.Domain\bin\Debug\net5.0\UteJob.Domain.deps.json
+E:\UteJob\UteJob\UteJob.Domain\bin\Debug\net5.0\UteJob.Domain.dll
+E:\UteJob\UteJob\UteJob.Domain\bin\Debug\net5.0\ref\UteJob.Domain.dll
+E:\UteJob\UteJob\UteJob.Domain\bin\Debug\net5.0\UteJob.Domain.pdb
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\UteJob.Domain.csproj.AssemblyReference.cache
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\UteJob.Domain.GeneratedMSBuildEditorConfig.editorconfig
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\UteJob.Domain.AssemblyInfoInputs.cache
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\UteJob.Domain.AssemblyInfo.cs
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\UteJob.Domain.csproj.CoreCompileInputs.cache
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\UteJob.Domain.dll
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\ref\UteJob.Domain.dll
+E:\UteJob\UteJob\UteJob.Domain\obj\Debug\net5.0\UteJob.Domain.pdb

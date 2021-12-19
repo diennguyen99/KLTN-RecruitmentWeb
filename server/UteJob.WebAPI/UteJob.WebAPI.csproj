@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>bd95bf7d-4b5a-40ec-b51f-23713bd8ba06</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.5" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UteJob.Application\UteJob.Application.csproj" />
+    <ProjectReference Include="..\UteJob.Infrastructure.Shared\UteJob.Infrastructure.Shared.csproj" />
+    <ProjectReference Include="..\UteJob.Infrastructure\UteJob.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Files\CVs\" />
+  </ItemGroup>
+
+</Project>
