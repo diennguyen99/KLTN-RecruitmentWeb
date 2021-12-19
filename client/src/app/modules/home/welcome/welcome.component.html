@@ -1,0 +1,49 @@
+<div class="mt-24">
+  <div class="space-y-4">
+    <div class="p-6 bg-indigo-500 shadow-lg rounded text-white">
+      <p class="font-bold text-4xl">Hi,Admin</p>
+      <p class="opacity-75">Welcome to uteJOB. Choose a Module to continue</p>
+      <button mat-raised-button color="warn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+    <div class="grid grid-cols-2 grid-rows-2 gap-6">
+      <div class="p-6 bg-indigo-500 shadow rounded text-white">
+        <p class="uppercase text-2xl font-bold">Candidate</p>
+        <p class="opacity-75">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+        </p>
+        <button
+          routerLink="/candidate"
+          class="py-2 px-4 bg-white text-indigo-500 uppercase rounded"
+        >
+          Candidate
+        </button>
+      </div>
+      <div class="p-6 bg-white shadow rounded text-black">
+        <p class="uppercase text-2xl font-bold">Employer</p>
+        <p class="opacity-75">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+        </p>
+        <button
+          routerLink="/employer"
+          class="py-2 px-4 text-white bg-indigo-500 uppercase rounded"
+        >
+          Employer
+        </button>
+      </div>
+      <div class="p-6 bg-white shadow rounded text-black">
+        <p class="uppercase text-2xl font-bold">Admin</p>
+        <p class="opacity-75">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis
+        </p>
+        <button
+          routerLink="/admin"
+          class="py-2 px-4 text-white bg-indigo-500 uppercase rounded"
+        >
+          Admin
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

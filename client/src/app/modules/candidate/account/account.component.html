@@ -1,0 +1,142 @@
+<div class="py-12 bg-gray-500">
+  <div class="container mx-auto">
+    <div class="flex justify-between text-white">
+      <span class="text-4xl">Candidates Resume</span>
+      <span>Home / Account</span>
+    </div>
+  </div>
+</div>
+
+<div class="py-12">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-4 gap-10">
+      <aside class="col-span-1 bg-white">
+        <div class="border w-full shadow py-4">
+          <div *ngIf="profileInfo$ | async as profileInfo" class="text-center">
+            <img
+              src="https://ui-avatars.com/api/?size=256&name= {{ profileInfo?.firstName }}+{{ profileInfo?.lastName }}"
+              alt="avatar"
+              class="mx-auto"
+            />
+            <div class="py-6 px-2">
+              <p
+                class="
+                  text-xl text-indigo-500
+                  font-bold
+                  leading-none
+                  capitalize
+                  truncate
+                "
+              >
+                {{ profileInfo?.firstName }} {{ profileInfo?.lastName }}
+              </p>
+              <span class="truncate">
+                @{{ profileInfo?.userName }}
+              </span>
+            </div>
+          </div>
+          <ul>
+            <li>
+              <a
+                routerLink="/candidate/account"
+                class="
+                  flex
+                  items-center
+                  px-10
+                  py-3
+                  text-base
+                  border-l-2 border-transparent
+                  hover:bg-gray-200 hover:border-indigo-500
+                "
+              >
+                <div class="w-8 pl-1">
+                  <i class="fas fa-id-badge text-indigo-500"></i>
+                </div>
+                Edit Profile
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/candidate/account/resume"
+                class="
+                  flex
+                  items-center
+                  px-10
+                  py-3
+                  text-base
+                  border-l-2 border-transparent
+                  hover:bg-gray-200 hover:border-indigo-500
+                "
+              >
+                <div class="w-8 pl-1">
+                  <i class="fas fa-file text-indigo-500"></i>
+                </div>
+                Resume
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/candidate/account"
+                class="
+                  flex
+                  items-center
+                  px-10
+                  py-3
+                  text-base
+                  border-l-2 border-transparent
+                  hover:bg-gray-200 hover:border-indigo-500
+                "
+              >
+                <div class="w-8 pl-0.5">
+                  <i class="fas fa-heart text-indigo-500"></i>
+                </div>
+                Favourite
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/candidate/account"
+                class="
+                  flex
+                  items-center
+                  px-10
+                  py-3
+                  text-base
+                  border-l-2 border-transparent
+                  hover:bg-gray-200 hover:border-indigo-500
+                "
+              >
+                <div class="w-8 pl-0.5">
+                  <i class="fas fa-briefcase text-indigo-500"></i>
+                </div>
+                Applied Job
+              </a>
+            </li>
+            <li>
+              <a
+                routerLink="/candidate/account/change-password"
+                class="
+                  flex
+                  items-center
+                  px-10
+                  py-3
+                  text-base
+                  border-l-2 border-transparent
+                  hover:bg-gray-200 hover:border-indigo-500
+                "
+              >
+                <div class="w-8 pl-0.5">
+                  <i class="fas fa-lock text-indigo-500"></i>
+                </div>
+                Change Password
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+      <div class="col-span-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

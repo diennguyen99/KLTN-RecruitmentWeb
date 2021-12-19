@@ -1,0 +1,150 @@
+<ng-container *ngIf="(company$ | async) as company">
+  <div class="py-12 bg-gray-200">
+    <div class="container mx-auto">
+      <div class="flex items-center">
+        <img
+          src="{{ company?.data?.logo }}"
+          alt="company"
+          class="w-32 h-32 rounded-full">
+        <div class="ml-4 space-y-2">
+          <span class="text-4xl font-bold truncate">{{ company?.data?.name }}</span>
+          <div class="flex space-x-4">
+            <div class="flex items-center space-x-1">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>{{ company?.data?.address }}</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <i class="fas fa-phone-alt"></i>
+              <span>{{ company?.data?.phone }}</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <i class="far fa-envelope"></i>
+              <span>{{ company?.data?.email }}</span>
+            </div>
+            <div class="flex items-center space-x-1">
+              <i class="fas fa-fax"></i>
+              <span>+84 {{ company?.data?.fax || '24 32005563' }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="py-10 bg-white">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-3 gap-10">
+        <div class="col-span-2">
+          <!-- ===== About Company ===== -->
+          <div>
+            <span class="text-xl font-bold">About Company</span>
+            <div class="ql-editor px-0">
+              {{ company?.data?.description }}
+            </div>
+          </div>
+
+          <!-- ===== Jobs At Company ===== -->
+          <div class="space-y-4">
+            <span class="text-2xl font-bold">
+              {{ company?.data?.jobs?.length }} jobs at {{ company?.data?.name }}
+            </span>
+
+            <div *ngFor="let job of company?.data?.jobs" class="border p-5 shadow-lg rounded-lg">
+              <div class="flex space-x-4">
+                <img
+                  class="h-28 w-28 rounded-full"
+                  src="{{ company?.data?.logo }}"
+                  alt="company">
+                <div class="flex-auto space-y-2">
+                  <a
+                    routerLink="/candidate/jobs/{{ job?.slug }}"
+                    class="text-xl font-bold hover:text-indigo-700 truncate capitalize">
+                    {{ job?.title }}
+                  </a>
+                  <div class="flex space-x-4">
+                    <div class="flex items-center space-x-2">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <span class="capitalize">{{ job?.city?.name }}</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <i class="far fa-clock"></i>
+                      <span class="capitalize">{{ job.createdOn | date: 'dd/MM/yyyy' }}</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                      <i class="far fa-building"></i>
+                      <span class="capitalize">{{ company?.data?.name }}</span>
+                    </div>
+                  </div>
+                  <div class="pt-2 flex space-x-4">
+                    <span class="py-2 px-3 bg-indigo-700 text-white capitalize rounded">
+                      {{ job?.jobType?.name }}
+                    </span>
+                      <span class="py-2 px-3 bg-pink-500 text-white capitalize rounded">
+                      {{ job?.jobExperience?.name }}
+                    </span>
+                  </div>
+                </div>
+                <div class="text-base text-indigo-700 font-bold space-x-1">
+                  <i class="fas fa-money-bill"></i>
+                  <span *ngIf="job.hideSalary">Negotiate</span>
+                  <span *ngIf="!job.hideSalary">
+                      {{ job.salaryFrom | currency:'USD' }} -
+                      {{ job.salaryTo | currency:'USD'}}
+                    </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== Info Company ===== -->
+        <div class="col-span-1">
+          <div class="py-8 px-5 bg-indigo-100 rounded-lg space-y-3">
+            <div class="text-lg flex justify-between">
+              <span>Company size:</span>
+              <span class="text-gray-500">{{ company?.data?.numberOfEmployees ?? 0 }} Members</span>
+            </div>
+            <div class="text-lg flex justify-between">
+              <span>Founded in:</span>
+              <span class="text-gray-500">{{ company?.data?.establishedIn ?? 2021 }}</span>
+            </div>
+            <div class="text-lg flex justify-between">
+              <span>Phone:</span>
+              <span class="text-gray-500">{{ company?.data?.phone ?? '0123456789' }}</span>
+            </div>
+            <div class="text-lg flex justify-between">
+              <span>Email:</span>
+              <span class="text-gray-500">{{ company?.data?.email ?? 'test@gmail.com' }}</span>
+            </div>
+            <div class="text-lg flex justify-between">
+              <span>Address:</span>
+              <span class="text-gray-500">{{ company?.data?.address ?? 'Quan 1' }}</span>
+            </div>
+            <div class="text-lg flex justify-between">
+              <span>Social media:</span>
+              <div class="flex items-center space-x-4">
+                <a href="{{ company?.data?.twitter ?? 'https://twitter.com' }}" target="_blank">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="{{ company?.data?.facebook ?? 'https://vi-vn.facebook.com' }}" target="_blank">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="{{ company?.data?.linkedin ?? 'https://www.linkedin.com' }}" target="_blank">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+              </div>
+            </div>
+
+            <a
+              href="{{ company?.data?.website || 'https://github.com/diennguyen99/KLTN-RecruitmentWeb' }}"
+              target="_blank"
+              class="block py-4 bg-indigo-700 rounded-lg">
+              <div class="truncate px-4 text-white">
+                {{ company?.data?.website || 'https://github.com/diennguyen99/KLTN-RecruitmentWeb' }}
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

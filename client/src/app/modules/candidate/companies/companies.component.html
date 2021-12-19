@@ -1,0 +1,59 @@
+<div class="py-12 bg-indigo-100">
+  <form [formGroup]="form" class="py-8 px-10 rounded-lg bg-white w-3/5 mx-auto">
+    <div class="flex items-center space-x-3">
+      <div class="text-2xl">
+        <i class="fas fa-search"></i>
+      </div>
+      <input
+        formControlName="searchString"
+        type="text"
+        placeholder="Search Companies..."
+        class="border:none focus:outline-none text-2xl w-full">
+      <button
+        (click)="onSearch()"
+        class="py-4 px-5 bg-indigo-700 text-white hover:bg-indigo-800 rounded-lg">
+        Find Companies
+      </button>
+    </div>
+  </form>
+</div>
+
+<ng-container *ngFor="let company of companies">
+  <div class="py-8 bg-white">
+    <div class="container mx-auto">
+      <div class="grid grid-cols-4 gap-10">
+        <div class="col-span-4">
+          <span class="text-base text-gray-500">
+              Showing
+              <span class="text-black">
+                {{ (currentPage-1) * pageSize + 1 }}-{{ currentPage * pageSize}}
+              </span>
+              of
+              <span class="text-black">
+                {{ totalPages }} jobs
+              </span>
+          </span>
+        </div>
+        <div class="col-span-1">
+          <div class="p-8 border rounded-lg text-center space-y-3">
+            <img
+              src="{{ company?.logo }}"
+              alt="company"
+              class="w-32 h-32 rounded-full mx-auto">
+            <div>
+              <a routerLink="/candidate/companies/{{ company?.slug }}" class="text-3xl font-bold">
+                {{ company?.name }}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <mat-paginator
+        [length]="totalCount"
+        [pageSize]="pageSize"
+        (page)="onPaginateChange($event)"
+        aria-label="Select page">
+      </mat-paginator>
+    </div>
+  </div>
+</ng-container>

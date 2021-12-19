@@ -1,0 +1,114 @@
+<div class="container mx-auto py-6">
+  <div class="flex justify-between">
+    <div class="relative w-1/2">
+      <div class="absolute left-0 bottom-48 w-full">
+        <p class="text-4xl font-bold">
+          Find Your Perfect Job <br />
+          Match
+        </p>
+        <p>Find Jobs, Employment & Career Opportunities</p>
+        <form [formGroup]="form" class="mt-6 py-4 px-4 bg-white shadow rounded-lg border">
+          <div class="flex justify-between divide-x">
+            <div class="flex items-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+              <div>
+                <input
+                  aria-label="Tag"
+                  [matAutocomplete]="tags"
+                  formControlName="tag"
+                  placeholder="Job title, keywords"
+                  class="
+                    focus:outline-none
+                    h-16
+                    pl-4
+                    pr-4
+                    w-full
+                    rounded-tl-lg rounded-bl-lg
+                  "
+                >
+                <mat-autocomplete #tags="matAutocomplete">
+                  <mat-option *ngFor="let tag of filteredTags | async" [value]="tag.name">
+                    <span>{{tag?.name}}</span>
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+            <div class="flex items-center pl-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1"
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              <div>
+                <input
+                  aria-label="City"
+                  [matAutocomplete]="cities"
+                  formControlName="city"
+                  placeholder="City"
+                  class="
+                  focus:outline-none
+                  h-16
+                  pl-4
+                  pr-4
+                  w-full
+                  rounded-tl-lg rounded-bl-lg
+                "
+                >
+                <mat-autocomplete #cities="matAutocomplete">
+                  <mat-option *ngFor="let city of filteredCities | async" [value]="city.name">
+                    <span>{{city?.name}}</span>
+                  </mat-option>
+                </mat-autocomplete>
+              </div>
+            </div>
+            <button
+              (click)="onSearch()"
+              type="button"
+              class="
+                px-6
+                h-16
+                rounded
+                text-white
+                border border-indigo-500
+                bg-indigo-500
+              "
+            >
+              Find Job
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div>
+      <img src="/assets/images/banner.png" alt="banner" />
+    </div>
+  </div>
+</div>

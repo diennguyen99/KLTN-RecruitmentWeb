@@ -1,0 +1,152 @@
+<div class="border bg-white shadow">
+  <div class="py-3 px-5 bg-indigo-500">
+    <span class="text-white text-xl">Profile Info</span>
+  </div>
+  <div class="p-5">
+    <form [formGroup]="formProfile">
+      <div class="grid grid-cols-2 gap-x-6">
+        <mat-form-field appearance="outline">
+          <mat-label>User Name</mat-label>
+          <input readonly matInput placeholder="User Name" required formControlName="userName"/>
+          <mat-error> Please provide a valid email </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email" required formControlName="email"/>
+          <mat-error> Please provide a valid email address </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" required formControlName="firstName" />
+          <mat-error> Please provide a valid first name </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" required formControlName="lastName" />
+          <mat-error> Please provide a valid last name </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <input type="number" matInput placeholder="Age" required formControlName="age" />
+          <mat-error> Please provide a valid age </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input matInput placeholder="Phone" required formControlName="phoneNumber"/>
+          <mat-error> Please provide a valid phone </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Address</mat-label>
+          <input matInput placeholder="Address" required formControlName="address"/>
+          <mat-error> Please provide a valid address </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input matInput placeholder="City" required formControlName="city"/>
+          <mat-error> Please provide a valid city </mat-error>
+        </mat-form-field>
+      </div>
+      <button
+        (click)="onSubmitProfile()"
+        *ngIf="!isBeingSubmitProfile"
+        class="
+          px-12
+          py-3
+          rounded-lg
+          focus:outline-none
+          text-white text-base
+          bg-indigo-500
+          hover:bg-indigo-600
+        "
+      >
+        Save
+      </button>
+      <button
+        type="submit"
+        *ngIf="isBeingSubmitProfile"
+        type="submit"
+        class="
+          px-12
+          py-3
+          rounded-lg
+          focus:outline-none
+          text-white text-base
+          bg-indigo-300
+        "
+      >
+        <mat-icon>
+          <mat-spinner diameter="20"> </mat-spinner>
+        </mat-icon>
+        Update you in..
+      </button>
+    </form>
+  </div>
+</div>
+
+<div class="border bg-white shadow mt-6">
+  <div class="py-3 px-5 bg-indigo-500">
+    <span class="text-white text-xl">Social Networks</span>
+  </div>
+  <div class="p-5">
+    <form [formGroup]="formSocial" (ngSubmit)="onSubmitSocial()">
+      <div class="grid grid-cols-2 gap-x-6">
+        <mat-form-field appearance="outline">
+          <mat-label>Facebook</mat-label>
+          <input matInput placeholder="Facebook" formControlName="facebook" />
+          <mat-error> Please provide a valid Facebook </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Twitter</mat-label>
+          <input matInput placeholder="Address" formControlName="twitter" />
+          <mat-error> Please provide a valid Twitter </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Linkedin</mat-label>
+          <input matInput placeholder="Address" formControlName="linkedin" />
+          <mat-error> Please provide a valid Linkedin </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Blog</mat-label>
+          <input matInput placeholder="Blog" formControlName="blog" />
+          <mat-error> Please provide a valid Blog </mat-error>
+        </mat-form-field>
+      </div>
+      <button
+        type="submit"
+        *ngIf="!isBeingSubmitSocial"
+        [disabled]="!formSocial.valid"
+        type="submit"
+        class="
+          px-12
+          py-3
+          rounded-lg
+          focus:outline-none
+          text-white text-base
+          bg-indigo-500
+          hover:bg-indigo-600
+        "
+      >
+        Save
+      </button>
+      <button
+        type="submit"
+        *ngIf="isBeingSubmitSocial"
+        [disabled]="!formSocial.valid"
+        type="submit"
+        class="
+          px-12
+          py-3
+          rounded-lg
+          focus:outline-none
+          text-white text-base
+          bg-indigo-300
+        "
+      >
+        <mat-icon>
+          <mat-spinner diameter="20"> </mat-spinner>
+        </mat-icon>
+        Update you in..
+      </button>
+    </form>
+  </div>
+</div>

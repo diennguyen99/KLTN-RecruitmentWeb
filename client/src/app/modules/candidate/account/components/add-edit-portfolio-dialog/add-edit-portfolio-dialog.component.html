@@ -1,0 +1,87 @@
+<h2 mat-dialog-title>{{ titleDialog }} Portfolio</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form">
+    <div class="grid grid-cols-2 gap-x-6">
+      <div class="col-span-2 mb-5">
+        <input
+          type="file"
+          #file
+          (change)="uploadFile(file.files)"
+          style="display:none;"
+          accept="image/png, image/jpg, image/jpeg">
+        <div
+          *ngIf="!image?.name && titleDialog != 'Edit'"
+          (click)="file.click()"
+          class="py-6 cursor-pointer w-full border rounded-lg flex flex-col items-center justify-center"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+          </svg>
+          <span class="text-xl text-indigo-700">Upload Thumbnail</span>
+          <p>PNG | JPG | JPEG</p>
+        </div>
+        <div
+          *ngIf="image?.name || titleDialog == 'Edit'"
+          (click)="file.click()"
+          class="py-6 cursor-pointer w-full border rounded-lg flex flex-col items-center justify-center"
+        >
+          <span class="text-xl text-indigo-700">
+            {{ image?.name ?? this.form.get('thumbnail')?.value.split("/").at(-1) }}
+          </span>
+        </div>
+      </div>
+      <div class="col-span-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="Name" required formControlName="title" />
+          <mat-error> Please provide a valid title </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-span-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Url Project</mat-label>
+          <input matInput placeholder="URL" required formControlName="url" />
+          <mat-error> Please provide a valid url project </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Date Start</mat-label>
+        <input matInput [matDatepicker]="dateStart" required formControlName="dateStart">
+        <mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>
+        <mat-datepicker #dateStart>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+        <mat-error> Please provide a valid date start </mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Date End</mat-label>
+        <input matInput [matDatepicker]="dateEnd" formControlName="dateEnd">
+        <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
+        <mat-datepicker #dateEnd>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+        <mat-error> Please provide a valid date start </mat-error>
+      </mat-form-field>
+      <div class="col-span-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea rows="4" matInput placeholder="Description" required formControlName="description"></textarea>
+          <mat-error> Please provide a valid description </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button *ngIf="titleDialog == 'Edit'" mat-button color="primary" (click)="onDelete()">Delete</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="onSubmit()" mat-button>
+    {{ titleDialog }}
+  </button>
+</mat-dialog-actions>

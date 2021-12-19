@@ -1,0 +1,102 @@
+<header
+  class="
+    fixed
+    z-50
+    h-16
+    top-0
+    right-0
+    left-0
+    bg-indigo-500
+    text-white
+    shadow-lg
+  "
+>
+  <div class="container mx-auto h-full">
+    <div class="flex items-center justify-between h-full">
+      <a routerLink="/candidate" class="text-4xl font-bold"> uteJOB </a>
+      <nav class="ml-8 h-full">
+        <ul class="flex items-center h-full">
+          <li class="h-full">
+            <a
+              routerLink="/candidate"
+              class="px-6 flex items-center h-full text-base"
+            >
+              Home
+            </a>
+          </li>
+          <li class="h-full">
+            <a
+              routerLink="/candidate/jobs"
+              class="px-6 flex items-center h-full text-base"
+            >
+              Jobs
+            </a>
+          </li>
+          <li class="h-full">
+            <a
+              routerLink="/candidate/companies"
+              class="px-6 flex items-center h-full text-base"
+            >
+              Companies
+            </a>
+          </li>
+          <li class="h-full">
+            <a
+              routerLink="/candidate/about-us"
+              class="px-6 flex items-center h-full text-base"
+            >
+              About Us
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <div>
+        <button
+          class="h-10 rounded-full overflow-hidden flex items-center font-bold"
+          [matMenuTriggerFor]="userMenu"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          My Account
+        </button>
+        <mat-menu
+          #userMenu="matMenu"
+          xPosition="before"
+          style="padding-top: 0 !important"
+        >
+          <button
+            mat-menu-item
+            routerLink="/candidate/account"
+            translate
+          >
+            Profile
+          </button>
+          <button
+            mat-menu-item
+            routerLink="/candidate/account/resume"
+            translate
+          >
+            Resume
+          </button>
+          <button
+            mat-menu-item
+            routerLink="/candidate/account/applied-job"
+            translate
+          >
+            Applied Job
+          </button>
+          <button
+            mat-menu-item
+            routerLink="/candidate/account/change-password"
+            translate
+          >
+            Change password
+          </button>
+          <mat-divider></mat-divider>
+          <button (click)="logout()" mat-menu-item translate>Logout</button>
+        </mat-menu>
+      </div>
+    </div>
+  </div>
+</header>

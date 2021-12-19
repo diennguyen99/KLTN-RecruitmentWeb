@@ -1,0 +1,41 @@
+<div class="space-y-4">
+  <div *ngFor="let jobApplied of appliedJobs" class="border p-5 shadow-lg rounded-lg">
+    <div class="flex space-x-4">
+      <img
+        class="h-28 w-28 rounded-full"
+        src="{{ jobApplied?.company?.logo}}"
+        alt="company">
+      <div class="flex-auto space-y-2">
+        <a
+          routerLink="/candidate/jobs/{{ jobApplied?.job?.slug }}"
+          class="text-xl font-bold hover:text-indigo-700 truncate capitalize">
+          {{ jobApplied?.job?.title }}
+        </a>
+        <div class="flex space-x-4">
+          <div class="flex items-center space-x-2">
+            <i class="far fa-clock"></i>
+            <span class="capitalize">{{ jobApplied?.createdOn | date: 'dd/MM/yyyy' }}</span>
+          </div>
+          <div class="flex items-center space-x-2">
+            <i class="far fa-building"></i>
+            <span class="capitalize">{{ jobApplied?.company?.name }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="text-base text-indigo-700 font-bold space-x-1">
+        <i class="fas fa-money-bill"></i>
+        <span *ngIf="jobApplied?.job?.hideSalary">Negotiate</span>
+        <span *ngIf="!jobApplied?.job?.hideSalary">
+        {{ jobApplied?.job?.salaryFrom | currency:'USD' }} -
+          {{ jobApplied?.job?.salaryTo | currency:'USD'}}
+      </span>
+      </div>
+    </div>
+  </div>
+  <mat-paginator
+    [length]="totalCount"
+    [pageSize]="pageSize"
+    (page)="onPaginateChange($event)"
+    aria-label="Select page">
+  </mat-paginator>
+</div>

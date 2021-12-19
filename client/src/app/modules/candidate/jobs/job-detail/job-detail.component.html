@@ -1,0 +1,150 @@
+<div *ngIf="(job$ | async) as job" class="py-12 bg-white">
+  <div class="container mx-auto">
+    <div class="grid grid-cols-3 gap-10">
+      <div class="col-span-2">
+        <div class="flex space-x-4">
+          <img
+            class="w-32 h-32 rounded-full truncate"
+            src="{{ job?.data?.company?.logo }}"
+            alt="company">
+          <div class="ml-4 space-y-3">
+            <span
+              class="text-3xl font-bold hover:text-indigo-700 truncate capitalize">
+              {{ job?.data?.title }}
+            </span>
+            <div class="flex space-x-4">
+              <div class="flex items-center space-x-2 text-base">
+                <i class="fas fa-map-marker-alt"></i>
+                <span class="capitalize">{{ job?.data?.city?.name }}</span>
+              </div>
+              <div class="flex items-center space-x-2 text-base">
+                <i class="far fa-clock"></i>
+                <span class="capitalize">{{ job?.data?.createdOn | date: 'dd/MM/yyyy' }}</span>
+              </div>
+              <div class="flex items-center space-x-2 text-base">
+                <i class="far fa-building"></i>
+                <span class="capitalize">{{ job?.data?.company?.name }}</span>
+              </div>
+            </div>
+            <div class="pt-2 flex space-x-4">
+              <span class="py-2 px-3 bg-indigo-700 text-white capitalize rounded">
+                {{ job?.data?.jobType?.name}}
+              </span>
+              <span class="py-2 px-3 bg-pink-500 text-white capitalize rounded">
+                {{ job?.data?.jobExperience?.name}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-6">
+          <div class="my-8">
+            <span class="text-xl font-bold">Job Description</span>
+            <div class="ql-editor px-0">{{ job?.data?.description }}</div>
+          </div>
+          <div class="my-8">
+            <span class="text-xl font-bold">Requirements</span>
+            <div class="ql-editor px-0">{{ job?.data?.requirements }}</div>
+          </div>
+          <div class="my-8">
+            <span class="text-xl font-bold">Benefits</span>
+            <div class="ql-editor px-0">{{ job?.data?.benefits }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-1">
+        <button
+          *ngIf="!appliedJob"
+          (click)="openApplyJobDialog(job?.data?.id || 0)"
+          class="py-4 w-full rounded-lg bg-indigo-700 text-white hover:bg-indigo-800">
+          Apply For Job
+        </button>
+        <button
+          *ngIf="appliedJob"
+          class="py-4 w-full rounded-lg bg-gray-300">
+          Applied Job
+        </button>
+        <div class="mt-6 py-5 px-8 bg-indigo-100 rounded-lg">
+          <span class="text-xl">Job Overview</span>
+          <ul class="mt-6 space-y-6">
+            <li>
+              <div class="flex space-x-6">
+                <div class="py-1 text-indigo-700">
+                  <i class="far fa-calendar"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-lg">Date Posted:</span>
+                  <span>Posted {{ job?.data?.createdOn | date: 'dd/MM/yyyy' }}</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flex space-x-6">
+                <div class="py-1 text-indigo-700">
+                  <i class="far fa-calendar"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-lg">Expiration date:</span>
+                  <span>{{ job?.data?.dateEnd | date: 'dd/MM/yyyy' }}</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flex space-x-6">
+                <div class="py-1 text-indigo-700">
+                  <i class="far fa-calendar"></i>
+                </div>
+                <div class="flex flex-col capitalize">
+                  <span class="text-lg">Location:</span>
+                  <span>{{ job?.data?.city?.name }}</span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flex space-x-6">
+                <div class="py-1 text-indigo-700">
+                  <i class="far fa-calendar"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-lg">Salary:</span>
+                  <span *ngIf="job?.data?.hideSalary">Negotiate</span>
+                  <span *ngIf="!job?.data?.hideSalary">
+                    {{ job?.data?.salaryFrom | currency:'USD' }} -
+                    {{ job?.data?.salaryTo | currency:'USD'}}
+                  </span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="flex space-x-6">
+                <div class="py-1 text-indigo-700">
+                  <i class="far fa-calendar"></i>
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-lg">Experience:</span>
+                  <span>{{ job?.data?.jobExperience?.name }}</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- ====== company ======= -->
+        <div class="mt-6 py-5 px-8 bg-indigo-100 rounded-lg">
+          <div class="flex items-center">
+            <img src="{{ job?.data?.company?.logo }}" alt="company" class="w-28 h-28 rounded-full">
+            <div class="ml-6 flex flex-col space-y-2">
+              <span class="text-2xl font-bold truncate" style="width: 12rem">
+                {{ job?.data?.company?.name }}
+              </span>
+              <a
+                routerLink="/candidate/companies/{{ job?.data?.company?.slug }}"
+                class="text-indigo-700">
+                View company profile
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

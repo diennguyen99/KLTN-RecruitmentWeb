@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>{{ titleDialog }} Skill</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form">
+    <div class="grid grid-cols-2 gap-x-6">
+      <div class="col-span-2">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Skill Name</mat-label>
+          <input type="text"
+                 placeholder="Pick one"
+                 aria-label="Number"
+                 matInput
+                 formControlName="name"
+                 [matAutocomplete]="auto">
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let skill of skillsNameOptions$ | async" [value]="skill.name">
+              {{skill.name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+      <div class="col-span-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Scores</mat-label>
+          <input matInput min="1" max="100" type="number" placeholder="Scores 1->100" required formControlName="scores" />
+          <mat-error> Please provide a valid scores </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button *ngIf="titleDialog == 'Edit'" mat-button color="primary" (click)="onDelete()">Delete</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="onSubmit()" mat-button>
+    {{ titleDialog }}
+  </button>
+</mat-dialog-actions>

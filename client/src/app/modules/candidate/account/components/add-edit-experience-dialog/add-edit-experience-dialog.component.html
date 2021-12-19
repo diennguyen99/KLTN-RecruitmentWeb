@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>{{ titleDialog }} Experience</h2>
+<mat-dialog-content class="mat-typography">
+  <form [formGroup]="form">
+    <div class="grid grid-cols-2 gap-x-6">
+      <div class="col-span-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Position</mat-label>
+          <input matInput placeholder="Position" required formControlName="position" />
+          <mat-error> Please provide a valid position </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col-span-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Company</mat-label>
+          <input matInput placeholder="Company" required formControlName="companyName" />
+          <mat-error> Please provide a valid company </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field appearance="fill" class="example-form-field">
+        <mat-label>Date Start</mat-label>
+        <input matInput [matDatepicker]="dateStart" required formControlName="dateStart">
+        <mat-datepicker-toggle matSuffix [for]="dateStart"></mat-datepicker-toggle>
+        <mat-datepicker #dateStart>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+        <mat-error> Please provide a valid date start </mat-error>
+      </mat-form-field>
+      <mat-form-field *ngIf="!this.form.controls['isPresent'].value" appearance="fill" class="example-form-field">
+        <mat-label>Date End</mat-label>
+        <input matInput [matDatepicker]="dateEnd" formControlName="dateEnd">
+        <mat-datepicker-toggle matSuffix [for]="dateEnd"></mat-datepicker-toggle>
+        <mat-datepicker #dateEnd>
+          <mat-datepicker-actions>
+            <button mat-button matDatepickerCancel>Cancel</button>
+            <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+        <mat-error> Please provide a valid date start </mat-error>
+      </mat-form-field>
+      <div class="my-3">
+        <mat-checkbox class="example-margin" formControlName="isPresent" color="primary">
+          Present
+        </mat-checkbox>
+      </div>
+      <div class="col-span-2">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Description</mat-label>
+          <textarea rows="4" matInput placeholder="Description" required formControlName="description"></textarea>
+          <mat-error> Please provide a valid description </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button *ngIf="titleDialog == 'Edit'" mat-button color="primary" (click)="onDelete()">Delete</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="onSubmit()" mat-button>
+    {{ titleDialog }}
+  </button>
+</mat-dialog-actions>
