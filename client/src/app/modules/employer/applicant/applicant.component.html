@@ -1,0 +1,7 @@
+<app-table
+  [title]="'Applicants'" [subtitle]="'Manage Applicants here.'"
+  [data]="applicants && applicants.data" [columns]="applicantColumns" (onFilter)="filter($event)"
+  (onReload)="reload()"
+  [totalCount]="applicants && applicants.totalCount" [pageSize]="applicants && applicants.pageSize"
+  (onPageChanged)="pageChanged($event)">
+</app-table>

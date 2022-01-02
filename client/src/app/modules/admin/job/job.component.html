@@ -1,0 +1,15 @@
+<div class="px-6 py-3 bg-gray-200">
+  <i class="fas fa-home"></i>
+  <span class="ml-2 text-indigo-700">Dashboard / Job / </span>
+  <span>All</span>
+</div>
+
+<div class="p-6">
+  <app-table
+    [title]="'Jobs'" [subtitle]="'Manage Jobs here.'"
+    [data]="jobs && jobs.data" [columns]="jobColumns" (onFilter)="filter($event)"
+    (onReload)="reload()" (onSort)="sort($event)"
+    [totalCount]="jobs && jobs.totalCount" [pageSize]="jobs && jobs.pageSize"
+    (onPageChanged)="pageChanged($event)">
+  </app-table>
+</div>

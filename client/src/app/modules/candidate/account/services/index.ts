@@ -5,6 +5,7 @@ import { SkillNameService } from "./skill-name.service";
 import { PortfolioService } from "./portfolio.service";
 import { EducationsService } from "./educations.service";
 import { SummaryService } from "./summary.service";
+import { AppliedJobPagerService } from "./applied-job-pager.service";
 
 export const services: any[] = [
   ExperiencesService,
@@ -13,7 +14,8 @@ export const services: any[] = [
   SkillNameService,
   PortfolioService,
   EducationsService,
-  SummaryService
+  SummaryService,
+  AppliedJobPagerService
 ];
 
 export * from './experiences.service';
@@ -23,3 +25,4 @@ export * from './skill-name.service';
 export * from './portfolio.service';
 export * from './educations.service';
 export * from './summary.service';
+export * from './applied-job-pager.service';

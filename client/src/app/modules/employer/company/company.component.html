@@ -1,0 +1,241 @@
+<div class="pb-6 flex justify-between">
+  <span class="font-bold text-4xl">Edit Company</span>
+  <button
+    mat-button
+    mat-raised-button
+    color="primary"
+    routerLink="/candidate/companies">
+    View Company
+  </button>
+</div>
+
+<form [formGroup]="form">
+  <div class="grid grid-cols-3 gap-6">
+    <div class="col-span-2">
+      <div class="space-y-6">
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Company Content</span>
+          </div>
+          <div class="px-4 py-5">
+            <div class="grid grid-cols-2 gap-x-6">
+              <mat-form-field appearance="outline">
+                <mat-label>Company Name</mat-label>
+                <input
+                  matInput
+                  placeholder="Company Name"
+                  required
+                  formControlName="name"/>
+                <mat-error> Please provide a valid company name </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  placeholder="Email"
+                  type="email"
+                  required
+                  formControlName="email"/>
+                <mat-error> Please provide a valid email </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Phone Number</mat-label>
+                <input
+                  matInput
+                  placeholder="Phone Number"
+                  required
+                  formControlName="phone"/>
+                <mat-error> Please provide a valid phone number </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Address</mat-label>
+                <input
+                  matInput
+                  placeholder="Address"
+                  required
+                  formControlName="address"/>
+                <mat-error> Please provide a valid address </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Fax</mat-label>
+                <input
+                  matInput
+                  placeholder="Fax"
+                  required
+                  formControlName="fax"/>
+                <mat-error> Please provide a valid fax </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Established In</mat-label>
+                <input
+                  matInput
+                  placeholder="Established In"
+                  type="number"
+                  min="1900"
+                  max="2022"
+                  required
+                  formControlName="establishedIn"/>
+                <mat-error> Please provide a valid established in </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">About Company</span>
+          </div>
+          <div class="px-4 py-5">
+            <quill-editor [styles]="{height: '300px'}" formControlName="description">
+              <div quill-editor-toolbar>
+                <span class="ql-formats">
+                  <select class="ql-font">
+                    <option selected></option>
+                    <option value="serif"></option>
+                    <option value="monospace"></option>
+                  </select>
+                  <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                  <button class="ql-strike"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-color"></select>
+                  <select class="ql-background"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                  <select class="ql-align">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-link"></button>
+                  <button class="ql-image"></button>
+                </span>
+              </div>
+            </quill-editor>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1">
+      <div class="space-y-6">
+        <div class="flex justify-end">
+          <button
+            (click)="onSubmit()"
+            [disabled]="!form.valid"
+            mat-button
+            mat-raised-button
+            color="primary">
+            <i class="far fa-save"></i>
+            Save Changes
+          </button>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Company Size</span>
+          </div>
+          <div class="px-4 py-5">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Number Of Employees</mat-label>
+              <input
+                matInput
+                type="number"
+                min="1"
+                max="1000000"
+                placeholder="Number Of Employees"
+                required
+                formControlName="numberOfEmployees"/>
+              <mat-error> Please provide a valid Number Of Employees </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Social Media</span>
+          </div>
+          <div class="px-4 py-5">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Website</mat-label>
+              <input
+                matInput
+                placeholder="Website"
+                required
+                formControlName="website"/>
+              <mat-error> Please provide a valid website </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Facebook</mat-label>
+              <input
+                matInput
+                placeholder="Facebook"
+                formControlName="facebook"/>
+              <mat-error> Please provide a valid Facebook </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Twitter</mat-label>
+              <input
+                matInput
+                placeholder="Twitter"
+                formControlName="twitter"/>
+              <mat-error> Please provide a valid Twitter </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Linkedin</mat-label>
+              <input
+                matInput
+                placeholder="Linkedin"
+                formControlName="linkedin"/>
+              <mat-error> Please provide a valid Linkedin </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- ============= LOGO ============== -->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Logo</span>
+          </div>
+          <div class="px-4 py-5">
+            <div
+              class="w-36 h-36 mx-auto bg-gray-300 cursor-pointer"
+              (click)="file.click()">
+              <img *ngIf="imageUrl" src="{{ imageUrl }}" alt="logo" class="w-full h-full">
+              <input
+                type="file"
+                #file
+                (change)="uploadFile(file.files)"
+                style="display:none;"
+                accept="image/png, image/jpg, image/jpeg">
+              <div
+                *ngIf="!image?.name && !imageUrl"
+                class="py-6 w-full rounded-lg flex flex-col items-center justify-center"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                </svg>
+                <span class="text-indigo-700">Upload Logo</span>
+                <p>PNG | JPG | JPEG</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

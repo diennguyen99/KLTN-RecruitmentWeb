@@ -17,8 +17,12 @@ export class AuthService {
   private currentUserTokenSource = new BehaviorSubject<string | null>(this.getStorageToken);
   public currentUserToken$ = this.currentUserTokenSource.asObservable();
 
-  constructor(private http: HttpClient, private localStorage: LocalStorageService, private router: Router, private toastr: ToastrService) {
-  }
+  constructor(
+    private http: HttpClient,
+    private localStorage: LocalStorageService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   public get getToken(): string | null {
     return this.currentUserTokenSource.getValue();
@@ -153,5 +157,9 @@ export class AuthService {
     const jwtService = new JwtHelperService();
     const decodedToken = jwtService.decodeToken(token);
     return decodedToken;
+  }
+
+  register(data: any): Observable<Result<any>> {
+    return this.http.post<Result<any>>(this.baseUrl + 'Identity/register', data );
   }
 }

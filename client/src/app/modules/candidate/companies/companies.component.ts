@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
-import {HttpClient, HttpParams} from "@angular/common/http";
-import {environment} from "../../../../environments/environment";
-import {PaginatedResult} from "../../../core/models/wrappers/PaginatedResult";
-import {Company} from "../../../core/models/company.model";
+import { HttpParams } from "@angular/common/http";
+import { Company } from "../../../core/models/company.model";
+import { CompaniesService } from "./services";
 
 @Component({
   selector: 'app-companies',
@@ -11,7 +10,6 @@ import {Company} from "../../../core/models/company.model";
 })
 export class CompaniesComponent implements OnInit {
 
-  private baseUrl = environment.apiURL;
   form!: FormGroup;
 
   // paging
@@ -24,7 +22,7 @@ export class CompaniesComponent implements OnInit {
 
   constructor(
     private readonly _fb: FormBuilder,
-    private readonly _http: HttpClient
+    private readonly _companiesService: CompaniesService
   ) { }
 
   ngOnInit(): void {
@@ -55,11 +53,11 @@ export class CompaniesComponent implements OnInit {
     paramsQuery = paramsQuery.append('pageSize', this.pageSize);
     paramsQuery = paramsQuery.append('orderBy', 'createdOn desc');
 
-    this._http.get<PaginatedResult<Company>>(this.baseUrl + 'Company', { params: paramsQuery }).subscribe((response) => {
+    this._companiesService.findCompanies(paramsQuery).subscribe((response) => {
       this.companies = response.data;
       this.currentPage = response.currentPage;
       this.totalCount = response.totalCount;
       this.totalPages = response.totalPages;
-    });
+    })
   }
 }

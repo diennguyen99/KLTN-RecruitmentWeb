@@ -3,9 +3,18 @@ import { CommonModule } from '@angular/common';
 import { HasRoleDirective } from "./directives/has-role.directive";
 import { ToastrModule } from "ngx-toastr";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
+import { DatePipe } from '@angular/common';
+
+// interceptors
 import { ErrorInterceptor } from "./interceptors/error.interceptor";
 import { JwtInterceptor } from "./interceptors/jwt.interceptor";
 import { LoadingInterceptor } from "./interceptors/loading.interceptor";
+
+// guards
+import { AuthGuard } from "./guards/auth.guard";
+import { RoleGuard } from "./guards/role.guard";
+
+// services
 import * as fromServices from './services';
 
 @NgModule({
@@ -18,6 +27,9 @@ import * as fromServices from './services';
     }),
   ],
   providers: [
+    AuthGuard,
+    RoleGuard,
+    DatePipe,
     ...fromServices.services,
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

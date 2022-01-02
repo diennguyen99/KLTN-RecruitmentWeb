@@ -1,0 +1,55 @@
+<div class="py-2">
+  <h2 mat-dialog-title>Lock User</h2>
+
+  <div class="mb-6 py-6 border rounded-lg py-10 px-6">
+    <div class="text-center text-4xl mb-4 font-bold"> User Info </div>
+    <div class="grid grid-cols-2 gap-6">
+      <div class="col-span-1">
+        <div class="space-x-2 text-base">
+          <span>First Name: </span>
+          <span class="font-bold">{{ data.firstName }}</span>
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div class="space-x-2 text-base">
+          <span>Last Name: </span>
+          <span class="font-bold">{{ data.lastName }}</span>
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div class="space-x-2 text-base">
+          <span>User Name: </span>
+          <span class="font-bold">{{ data.userName }}</span>
+        </div>
+      </div>
+      <div class="col-span-1">
+        <div class="space-x-2 text-base">
+          <span>Email: </span>
+          <span class="font-bold">{{ data.email }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <div class="text-center">
+      <select class="py-2 px-4 rounded-lg border" formControlName="isLock">
+        <option value="false">Lock</option>
+        <option value="true">None Lock</option>
+      </select>
+    </div>
+
+    <mat-dialog-actions align="end">
+      <button mat-dialog-close mat-raised-button>Cancel</button>
+      <button
+        [disabled]="!form.valid"
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        color="primary"
+        mat-raised-button
+        type="submit">
+        Submit
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

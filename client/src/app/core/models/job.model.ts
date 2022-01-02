@@ -7,6 +7,7 @@ export class Job {
   id!: number;
   companyId?: number;
   company?: Company;
+  companyName?: string;
   cityId?: number;
   city?: City;
   jobType?: JobType;

@@ -6,6 +6,8 @@ import { CompanyDetailComponent } from './company-detail/company-detail.componen
 import { SharedModule } from "../../../shared/shared.module";
 import { MaterialUiModule } from "../../../material-ui/material-ui.module";
 
+// services
+import * as fromServices from './services';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { MaterialUiModule } from "../../../material-ui/material-ui.module";
     RouterModule.forChild(companiesRoutes),
     SharedModule,
     MaterialUiModule
-  ]
+  ],
+  providers: [...fromServices.services]
 })
 export class CompaniesModule { }

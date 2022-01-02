@@ -1,19 +1,15 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
-import {HttpClient} from "@angular/common/http";
-import {ToastrService} from "ngx-toastr";
-import {Result} from "src/app/core/models/wrappers/Result";
-import {environment} from "../../../../../../environments/environment";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {CV} from "../../../../../core/models/cv.model";
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from "@angular/forms";
+import { ToastrService } from "ngx-toastr";
+import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
+import { CV } from "../../../../../core/models/cv.model";
+import { JobsService } from "../../servies/jobs.service";
 
 @Component({
   selector: 'app-apply-job-dialog',
   templateUrl: './apply-job-dialog.component.html'
 })
 export class ApplyJobDialogComponent implements OnInit {
-
-  private baseUrl = environment.apiURL;
 
   form!: FormGroup;
   cvFile!: File;
@@ -23,18 +19,17 @@ export class ApplyJobDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<ApplyJobDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public _idJob: number,
     private readonly _fb: FormBuilder,
-    private readonly _http: HttpClient,
+    private readonly _jobsService: JobsService,
     private readonly _toastrService: ToastrService,
   ) { }
 
   ngOnInit(): void {
     this.initialForm();
 
-    this._http.get<Result<CV[]>>(this.baseUrl + 'CV').subscribe(response => {
-      if (response.succeeded) {
+    this._jobsService.getCVsByCurrentUser().subscribe(response => {
+      if (response.succeeded)
         this.cvs = response.data;
-      }
-    })
+    });
   }
 
   private initialForm() {
@@ -62,9 +57,9 @@ export class ApplyJobDialogComponent implements OnInit {
         formData.append("UploadRequest.Extension", `.${this.cvFile.name.split('.')[1]}`);
         formData.append("UploadRequest.File", this.cvFile, this.cvFile.name);
 
-        this._http.post<Result<any>>(this.baseUrl + 'CV', formData).subscribe((response) => {
+        this._jobsService.uploadCV(formData).subscribe((response) => {
           if (response.succeeded === true){
-            this.applyJob(false, parseInt(response.data, 10));
+            this.applyJob(false, response.data);
           } else {
             this._toastrService.error("Apply Fail!")
           }
@@ -93,7 +88,7 @@ export class ApplyJobDialogComponent implements OnInit {
         jobId: this._idJob
       }
 
-      this._http.post<Result<any>>(this.baseUrl + 'AppliedJob', data).subscribe((response) => {
+      this._jobsService.applyJob(data).subscribe((response) => {
         if (response.succeeded === true){
           this._toastrService.success("Apply Success!")
           this.dialogRef.close(true);

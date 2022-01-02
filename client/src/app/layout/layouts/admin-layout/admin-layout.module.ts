@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { SharedModule } from "../../../shared/shared.module";
+import { RouterModule } from "@angular/router";
+import { MaterialUiModule } from "../../../material-ui/material-ui.module";
 import { AdminLayoutComponent } from './admin-layout.component';
-
-
+import { ToolbarComponent } from './toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    ToolbarComponent
   ],
   imports: [
-    CommonModule
+    SharedModule,
+    RouterModule,
+    MaterialUiModule
+  ],
+  exports: [
+    AdminLayoutComponent
   ]
 })
 export class AdminLayoutModule { }

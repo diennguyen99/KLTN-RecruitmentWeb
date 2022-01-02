@@ -1,0 +1,91 @@
+<div class="mt-10">
+  <div class="container mx-auto w-1/3">
+    <mat-card>
+      <mat-card-content>
+        <div>
+          <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+            <h1>Sign up to uteJOB</h1>
+            <h3>Enter your registration information here.</h3>
+            <div class="flex flex-col space-y-2 mb-3">
+              <mat-radio-group
+                aria-label="Select an role"
+                color="primary"
+                formControlName="roleName"
+                class="mb-4 flex justify-between text-xl">
+                <mat-radio-button value="Candidate">Candidate</mat-radio-button>
+                <mat-radio-button value="Employer">Employer</mat-radio-button>
+              </mat-radio-group>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="First Name"
+                  formControlName="firstName"
+                  required
+                />
+                <mat-error> Please provide a valid first name </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="Last Name"
+                  formControlName="lastName"
+                  required
+                />
+                <mat-error> Please provide a valid last name </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="Phone Number"
+                  formControlName="phoneNumber"
+                  required
+                />
+                <mat-error> Please provide a valid phone number </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="User Name"
+                  formControlName="userName"
+                  required
+                />
+                <mat-error> Please provide a valid user name </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  placeholder="Email"
+                  formControlName="email"
+                  required
+                />
+                <mat-error> Please provide a valid email address </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <input
+                  matInput
+                  type="password"
+                  placeholder="Password"
+                  formControlName="password"
+                  required
+                />
+                <mat-error> Please provide a valid password </mat-error>
+              </mat-form-field>
+            </div>
+            <button
+              mat-raised-button
+              color="primary"
+              style="width: 100%; height: 50px"
+              [disabled]="!signUpForm.valid"
+              type="submit"
+            >
+              Sign Up
+            </button>
+          </form>
+          <div class="mt-3 text-center">
+            <p>Already have an account? <a routerLink="/" class="text-indigo-700 hover:underline">SignIn</a></p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

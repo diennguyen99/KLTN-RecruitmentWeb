@@ -1,0 +1,16 @@
+<div class="px-6 py-3 bg-gray-200">
+  <i class="fas fa-home"></i>
+  <span class="ml-2 text-indigo-700">Dashboard / User / </span>
+  <span>All</span>
+</div>
+
+<div class="p-6">
+  <app-table
+    [title]="'Users'" [subtitle]="'Manage, Add or Remove Users here.'"
+    [data]="users && users.data" [columns]="userColumns" (onFilter)="filter($event)"
+    (onReload)="reload()" (onSort)="sort($event)"
+    (onEditForm)="openForm($event)"
+    [totalCount]="users && users.totalCount" [pageSize]="users && users.pageSize"
+    (onPageChanged)="pageChanged($event)">
+  </app-table>
+</div>

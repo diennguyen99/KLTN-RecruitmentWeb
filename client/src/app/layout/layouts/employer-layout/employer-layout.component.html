@@ -1,1 +1,45 @@
-<p>employer-layout works!</p>
+<mat-sidenav-container class='h-screen'>
+  <mat-sidenav #sidenav class="w-64" disableClose="false" mode="side" opened>
+    <mat-nav-list>
+      <div class="py-3 border-b text-center">
+        <span class="text-2xl text-indigo-700 font-bold">Employer</span>
+      </div>
+      <div class="px-4 py-2">
+        <a mat-list-item routerLink="/employer" >
+          <i class="fas fa-home"></i>
+          <span class="ml-2">Dashboard</span>
+        </a>
+        <div class="py-2 text-gray-500">
+          Company Management
+        </div>
+        <a mat-list-item routerLink="/employer/company">
+          <i class="fas fa-building"></i>
+          <span class="ml-2">Company Profile</span>
+        </a>
+        <div class="py-2 text-gray-500">
+          Job Management
+        </div>
+        <a mat-list-item routerLink="/employer/job">
+          <i class="fas fa-briefcase"></i>
+          <span class="ml-2">All Jobs</span>
+        </a>
+        <a mat-list-item routerLink="/employer/job/create">
+          <i class="fas fa-calendar-plus"> </i>
+          <span class="ml-2">Add Job</span>
+        </a>
+        <div class="py-2 text-gray-500">
+          Candidate Management
+        </div>
+        <a mat-list-item routerLink="/employer/applicants">
+          <i class="fas fa-users"></i>
+          <span class="ml-2">Applicants</span>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <app-toolbar [inputSideNav]="sidenav"></app-toolbar>
+
+  <div class="py-10 px-6">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

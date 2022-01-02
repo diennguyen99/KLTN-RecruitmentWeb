@@ -1,0 +1,16 @@
+<div class="px-6 py-3 bg-gray-200">
+  <i class="fas fa-home"></i>
+  <span class="ml-2 text-indigo-700">Dashboard / Tag / </span>
+  <span>All</span>
+</div>
+
+<div class="p-6">
+  <app-table
+    [title]="'Tags'" [subtitle]="'Manage, Add or Remove Tags here.'"
+    [data]="tags && tags.data" [columns]="tagColumns" (onFilter)="filter($event)"
+    (onReload)="reload()" (onSort)="sort($event)"
+    (onDelete)="remove($event)" (onCreateForm)="openForm()" (onEditForm)="openForm($event)"
+    [totalCount]="tags && tags.totalCount" [pageSize]="tags && tags.pageSize"
+    (onPageChanged)="pageChanged($event)">
+  </app-table>
+</div>

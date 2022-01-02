@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-employer-layout',
-  templateUrl: './employer-layout.component.html',
-  styleUrls: ['./employer-layout.component.scss']
+  templateUrl: './employer-layout.component.html'
 })
 export class EmployerLayoutComponent implements OnInit {
 

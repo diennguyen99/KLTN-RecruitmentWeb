@@ -5,6 +5,7 @@ export class JobTag {
   id!: number;
   jobId?: number;
   tagId?: number;
+  tag?: Tag;
   company?: string
   companyLogo?: string;
   city?: string;

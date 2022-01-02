@@ -1,25 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { HttpClient, HttpParams } from "@angular/common/http";
-import { environment } from "../../../../environments/environment";
-import { PaginatedResult } from "../../../core/models/wrappers/PaginatedResult";
+import { HttpParams } from "@angular/common/http";
 import { JobTag } from "../../../core/models/job-tag.model";
 import { Store } from "@ngrx/store";
 import * as fromStore from "../../../store";
-import {map, Observable, startWith, Subscription} from "rxjs";
+import { map, Observable, startWith, Subscription} from "rxjs";
 import { JobType } from "../../../core/models/job-type.model";
 import { JobExperience } from "../../../core/models/job-experience.model";
 import { City } from "../../../core/models/city.model";
 import { Tag} from "../../../core/models/tag.model";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import {JobsService} from "./servies/jobs.service";
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html'
 })
 export class JobsComponent implements OnInit {
-
-  private baseUrl = environment.apiURL;
 
   form!: FormGroup;
 
@@ -43,7 +40,7 @@ export class JobsComponent implements OnInit {
 
   // paging
   currentPage: number = 1;
-  pageSize: number = 1;
+  pageSize: number = 5;
   totalCount: number = 0;
   totalPages: number = 0;
 
@@ -51,13 +48,14 @@ export class JobsComponent implements OnInit {
 
   constructor(
     private readonly _route: ActivatedRoute,
-    private readonly _http: HttpClient,
+    private readonly _jobsService: JobsService,
     private readonly _storeApp: Store<fromStore.AppState>,
     private readonly _fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
     this.initialForm();
+    this.patchValueFomSearch();
 
     this._route.queryParams.subscribe(params => {
       const tag = params['tag'] ?? null;
@@ -68,40 +66,6 @@ export class JobsComponent implements OnInit {
 
     this.jobTypes$ = this._storeApp.select(fromStore.getAllJobTypes);
     this.jobExperiences$ = this._storeApp.select(fromStore.getAllJobExperiences);
-
-    this.citiesSubscription = this._storeApp.select(fromStore.getAllCities).subscribe((response) => {
-      this.cities = response;
-    });
-    this.citiesSubscription = this._storeApp.select(fromStore.getAllTags).subscribe((response) => {
-      this.tags = response;
-    });
-
-    this.filteredTags = this.form.get('tag')!.valueChanges.pipe(
-      startWith(''),
-      map(tag => (tag ? this.filterTags(tag) : this.tags.slice())),
-    );
-
-    this.filteredCities = this.form.get('city')!.valueChanges.pipe(
-      startWith(''),
-      map(city => (city ? this.filterCities(city) : this.cities.slice())),
-    );
-  }
-
-  private initialForm() {
-    this.form = this._fb.group({
-      tag: [null],
-      city: [null]
-    })
-  }
-
-  private filterCities(value: string): City[] {
-    const filterValue = value.toLowerCase();
-    return this.cities.filter(city => city.name?.toLowerCase().includes(filterValue));
-  }
-
-  private filterTags(value: string): Tag[] {
-    const filterValue = value.toLowerCase();
-    return this.tags.filter(tag => tag.name?.toLowerCase().includes(filterValue));
   }
 
   onJobTypeSelected(jobTypeId: number) {
@@ -130,6 +94,49 @@ export class JobsComponent implements OnInit {
     this.onSearch();
   }
 
+  onSearch() {
+    const tag = this.tags.find(t => t.name === this.form.get('tag')?.value)?.slug;
+    const city = this.cities.find(c => c.name === this.form.get('city')?.value)?.slug;
+    this.getJobs(tag!, city!, this.jobTypeSelected, this.jobExperienceSelected);
+  }
+
+  // =============== private function ================
+  private initialForm() {
+    this.form = this._fb.group({
+      tag: [null],
+      city: [null]
+    })
+  }
+
+  private patchValueFomSearch() {
+    this.citiesSubscription = this._storeApp.select(fromStore.getAllCities).subscribe((response) => {
+      this.cities = response;
+    });
+    this.tagsAppSubscription = this._storeApp.select(fromStore.getAllTags).subscribe((response) => {
+      this.tags = response;
+    });
+
+    this.filteredTags = this.form.get('tag')!.valueChanges.pipe(
+      startWith(''),
+      map(tag => (tag ? this.filterTags(tag) : this.tags.slice())),
+    );
+
+    this.filteredCities = this.form.get('city')!.valueChanges.pipe(
+      startWith(''),
+      map(city => (city ? this.filterCities(city) : this.cities.slice())),
+    );
+  }
+
+  private filterCities(value: string): City[] {
+    const filterValue = value.toLowerCase();
+    return this.cities.filter(city => city.name?.toLowerCase().includes(filterValue));
+  }
+
+  private filterTags(value: string): Tag[] {
+    const filterValue = value.toLowerCase();
+    return this.tags.filter(tag => tag.name?.toLowerCase().includes(filterValue));
+  }
+
   private getJobs(tag: string, city: string, jobTypeId: number, jobExperienceId: number){
     let paramsQuery = new HttpParams();
     if (tag) paramsQuery = paramsQuery.append('tag', tag);
@@ -140,17 +147,11 @@ export class JobsComponent implements OnInit {
     paramsQuery = paramsQuery.append('pageSize', this.pageSize);
     paramsQuery = paramsQuery.append('orderBy', this.sortSelected);
 
-    this._http.get<PaginatedResult<JobTag>>(this.baseUrl + 'JobTag', { params: paramsQuery }).subscribe((response) => {
+    this._jobsService.findJobs(paramsQuery).subscribe(response => {
       this.jobTags = response.data;
       this.currentPage = response.currentPage;
       this.totalCount = response.totalCount;
       this.totalPages = response.totalPages;
-    });
-  }
-
-  onSearch() {
-    const tag = this.tags.find(t => t.name === this.form.get('tag')?.value)?.slug;
-    const city = this.cities.find(c => c.name === this.form.get('city')?.value)?.slug;
-    this.getJobs(tag!, city!, this.jobTypeSelected, this.jobExperienceSelected);
+    })
   }
 }

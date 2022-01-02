@@ -1,0 +1,201 @@
+<ng-container *ngIf="cvOnline$ | async as cvOnline">
+  <div #content class="flex justify-between px-4">
+    <div class="flex-auto space-y-4">
+      <div>
+        <span class="capitalize text-indigo-700 text-4xl font-bold truncate">
+          {{ cvOnline.data?.firstName }} {{ cvOnline.data?.lastName }}
+        </span>
+      </div>
+      <div class="space-y-2">
+        <div class="flex items-center text-base">
+          <i class="text-indigo-700 fas fa-birthday-cake"></i>
+          <span class="ml-2">
+          {{ cvOnline.data?.age }}
+        </span>
+        </div>
+        <div class="flex items-center text-base">
+          <i class="text-indigo-700 far fa-envelope"></i>
+          <span class="ml-2">
+          {{ cvOnline.data?.email }}
+        </span>
+        </div>
+        <div class="flex items-center text-base">
+          <i class="text-indigo-700 fas fa-phone-alt"></i>
+          <span class="ml-2">
+          {{ cvOnline.data?.phone }}
+        </span>
+        </div>
+        <div class="flex items-center text-base">
+          <i class="text-indigo-700 fas fa-map-marked-alt"></i>
+          <span class="ml-2 capitalize">
+          {{ cvOnline.data?.address }}  {{ cvOnline.data?.city }}
+        </span>
+        </div>
+      </div>
+    </div>
+    <div class="w-48 h-48 mr-4 rounded-full overflow-hidden">
+      <img
+        src="https://ui-avatars.com/api/?size=256&name={{cvOnline.data?.firstName}}+{{cvOnline.data?.lastName}}"
+        alt="avatar"
+        class="w-full h-auto">
+    </div>
+    <ul class="flex flex-col">
+      <li *ngIf="cvOnline.data?.facebook" class="py-2 text-center">
+        <a href="{{ cvOnline.data.facebook }}" target="_blank" class="text-3xl hover:text-indigo-700">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+      <li *ngIf="cvOnline.data?.twitter" class="py-2 text-center">
+        <a href="{{ cvOnline.data.twitter }}" target="_blank" class="text-3xl hover:text-indigo-700">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li *ngIf="cvOnline.data?.linkedin" class="py-2 text-center">
+        <a href="{{ cvOnline.data.linkedin }}" target="_blank" class="text-3xl hover:text-indigo-700">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+      <li *ngIf="cvOnline.data?.blog" class="py-2 text-center">
+        <a href="{{ cvOnline.data.blog }}" target="_blank" class="text-3xl hover:text-indigo-700">
+          <i class="fab fa-blogger"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <ng-container *ngIf="cvOnline.data?.summary">
+    <div class="py-4">
+      <div class="text-center">
+        <span class="text-indigo-700 font-bold text-2xl">
+          Summary
+        </span>
+      </div>
+      <div class="ql-editor px-0" [innerHTML]="cvOnline.data?.summary?.summary"></div>
+    </div>
+  </ng-container>
+
+  <div class="py-12 grid grid-cols-3 gap-6 divide-x">
+    <div class="col-span-2">
+      <!-- ======== Educations =========-->
+      <div class="py-2">
+        <div class="pt-2 px-4">
+          <span class="text-indigo-700 font-bold text-2xl">
+            Educations
+          </span>
+        </div>
+        <div class="px-4">
+          <div class="space-y-4 divide-y">
+            <div class="pt-4" *ngFor="let education of cvOnline.data.educations">
+              <span class="text-base font-bold capitalize">{{ education?.schoolName }}</span>
+              <div class="flex justify-between">
+                <span class="text-base font-bold italic capitalize">{{ education?.majorsName }}</span>
+                <span class="text-base">
+                  {{ education.dateStart | date: 'dd/MM/yyyy' }}
+                  -
+                <ng-template [ngIf]="education.isPresent">
+                  Present
+                </ng-template>
+                <ng-template [ngIf]="!education.isPresent">
+                  {{ education.dateEnd | date: 'dd/MM/yyyy' }}
+                </ng-template>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ======== Experiences =========-->
+      <div class="py-2">
+        <div class="pt-2 px-4">
+          <span class="text-indigo-700 font-bold text-2xl">
+            Experiences
+          </span>
+        </div>
+        <div class="px-4">
+          <div class="space-y-4 divide-y">
+            <div class="pt-4" *ngFor="let experience of cvOnline?.data?.experiences">
+              <span class="text-base font-bold capitalize">{{ experience?.companyName }}</span>
+              <div class="flex justify-between">
+                <span class="text-base font-bold italic capitalize">{{ experience?.position }}</span>
+                <span class="text-base">
+              {{ experience.dateStart | date: 'dd/MM/yyyy' }}
+                  -
+              <ng-template [ngIf]="experience.isPresent">
+                Present
+              </ng-template>
+              <ng-template [ngIf]="!experience.isPresent">
+                {{ experience.dateEnd | date: 'dd/MM/yyyy' }}
+              </ng-template>
+            </span>
+              </div>
+              <div class="mt-2">
+                <span>{{ experience.description }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1">
+      <!-- ======== Skills =========-->
+      <div class="py-2">
+        <div class="py-2 px-4">
+          <span class="text-indigo-700 font-bold text-2xl">
+            Skills
+          </span>
+        </div>
+        <ul>
+          <li
+            *ngFor="let skill of cvOnline.data.skills"
+            class="px-5 py-3 hover:bg-gray-300 cursor-pointer">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="capitalize font-bold w-2/3 truncate">{{ (skill.skill?.name ) }}</span>
+                <span class="text-gray-500">{{ skill.scores }}</span>
+              </div>
+              <div class="relative bg-gray-100 h-1.5">
+                <div style="width: {{skill.scores}}%" class="absolute h-full bg-indigo-700"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="divide-y">
+    <div class="px-5 py-4 flex justify-between">
+      <span class="text-xl font-bold"> My Portfolio</span>
+    </div>
+    <div class="px-5 py-4">
+      <div class="grid grid grid-cols-2 gap-8">
+        <!-- ======== Projects =========-->
+        <div
+          *ngFor="let portfolio of cvOnline.data.projects"
+          class="h-28 rounded overflow-hidden flex">
+          <div class="grid grid-cols-3">
+            <div class="w-full">
+              <img src="{{portfolio.thumbnail}}" alt="{{portfolio.title}}" class="w-full h-auto">
+            </div>
+            <div class="col-span-2">
+              <div class="pl-4 flex flex-col">
+                <div>
+                  <span class="capitalize text-indigo-700 text-xl">
+                    {{ portfolio.title }}
+                  </span>
+                </div>
+                <div class="h-14 text-ellipsis overflow-hidden text-gray-500">
+                  {{ portfolio.description }}
+                </div>
+                <div class="mt-2">
+                  {{ portfolio.dateStart | date: 'dd/MM/yyyy' }} -
+                  {{ portfolio.dateEnd | date: 'dd/MM/yyyy' }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

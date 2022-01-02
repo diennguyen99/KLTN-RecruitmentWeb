@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <div class="w-full">
+    <div>
+      <label class="mb-1 text-base">Tag</label>
+      <input
+        aria-label="Tag"
+        [matAutocomplete]="tags"
+        formControlName="tag"
+        placeholder="Frontend, Backend,..."
+        class="
+        focus:outline-none
+        h-16
+        pl-4
+        pr-4
+        w-full
+        border
+        rounded">
+      <mat-autocomplete #tags="matAutocomplete">
+        <mat-option *ngFor="let tag of filteredTags | async" [value]="tag.name">
+          <span>{{tag?.name}}</span>
+        </mat-option>
+      </mat-autocomplete>
+    </div>
+  </div>
+  <mat-dialog-actions align="end">
+    <button *ngIf="title === 'Edit'" mat-button mat-raised-button color="warn" (click)="onDelete()">
+      Delete
+    </button>
+    <button [disabled]="!form.valid" mat-button mat-raised-button color="primary" (click)="onSubmit()" >
+      Submit
+    </button>
+  </mat-dialog-actions>
+</form>

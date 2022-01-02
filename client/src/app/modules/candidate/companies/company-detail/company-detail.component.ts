@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
-import {Result} from "../../../../core/models/wrappers/Result";
-import {environment} from "../../../../../environments/environment";
-import {Observable} from "rxjs";
-import {Company} from "../../../../core/models/company.model";
-import {HttpClient} from "@angular/common/http";
+import { ActivatedRoute } from "@angular/router";
+import { Observable } from "rxjs";
+import { CompaniesService } from "../services";
+import { Result } from "../../../../core/models/wrappers/Result";
+import { Company } from "../../../../core/models/company.model";
 
 @Component({
   selector: 'app-company-detail',
@@ -12,18 +11,16 @@ import {HttpClient} from "@angular/common/http";
 })
 export class CompanyDetailComponent implements OnInit {
 
-  private baseUrl = environment.apiURL;
   company$!: Observable<Result<Company>>;
 
   constructor(
     private readonly _route: ActivatedRoute,
-    private readonly _http: HttpClient
+    private readonly _companiesService: CompaniesService
   ) { }
 
   ngOnInit(): void {
     this._route.paramMap.subscribe(params => {
-      this.company$ = this._http.get<Result<Company>>(this.baseUrl + `Company/${params.get('slug')}`);
+      this.company$ = this._companiesService.findCompanyBySlug(params.get('slug'))
     })
   }
-
 }

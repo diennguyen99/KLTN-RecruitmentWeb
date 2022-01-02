@@ -4,9 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
-@Injectable(
-  { providedIn: 'root' }
-)
+@Injectable()
 export class RoleGuard implements CanActivate {
   constructor(
     private _authService: AuthService,

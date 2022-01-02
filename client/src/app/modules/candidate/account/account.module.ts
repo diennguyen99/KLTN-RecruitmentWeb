@@ -3,9 +3,7 @@ import { RouterModule } from '@angular/router';
 import { StoreModule } from "@ngrx/store";
 import { EffectsModule } from "@ngrx/effects";
 import { reducers, effects } from "./store";
-import { QuillModule } from 'ngx-quill';
 import { accountRoutes } from './account.routing';
-import { quillModulesConfig } from './quill-editor.config';
 
 import { MaterialUiModule } from 'src/app/material-ui/material-ui.module';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -43,10 +41,7 @@ import { AppliedJobComponent } from './applied-job/applied-job.component';
     MaterialUiModule,
     SharedModule,
     StoreModule.forFeature('account', reducers),
-    EffectsModule.forFeature(effects),
-    QuillModule.forRoot({
-      modules: quillModulesConfig
-    })
+    EffectsModule.forFeature(effects)
   ],
   providers: [...fromServices.services],
 })

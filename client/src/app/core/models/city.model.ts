@@ -3,4 +3,5 @@ export class City {
   name?: string;
   slug?: string;
   isShowSearch?: boolean;
+  createdOn?: string;
 }

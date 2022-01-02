@@ -13,7 +13,15 @@ const routes: Routes = [
     },
     children: [
       {
+        path: 'sign-up',
+        loadChildren: () =>
+          import('./modules/auth/sign-up/sign-up.module').then(
+            (m) => m.SignUpModule
+          ),
+      },
+      {
         path: '',
+        pathMatch: 'full',
         loadChildren: () =>
           import('./modules/auth/sign-in/sign-in.module').then(
             (m) => m.SignInModule
@@ -42,6 +50,8 @@ const routes: Routes = [
       },
     ],
   },
+
+  // =============== Candidate ROLE ================
   {
     path: 'candidate',
     //canActivate: [AuthGuard, RoleGuard],
@@ -88,6 +98,110 @@ const routes: Routes = [
       }
     ],
   },
+
+  // =============== Employer ROLE ================
+  {
+    path: 'employer',
+    //canActivate: [AuthGuard, RoleGuard],
+    component: LayoutComponent,
+    data: {
+      layout: 'employer',
+      allowedRoles: ['Employer']
+    },
+    children: [
+      {
+        path: 'company',
+        loadChildren: () =>
+          import('./modules/employer/company/company.module').then(
+            (m) => m.CompanyModule
+          ),
+      },
+      {
+        path: 'job',
+        loadChildren: () =>
+          import('./modules/employer/job/job.module').then(
+            (m) => m.JobModule
+          ),
+      },
+      {
+        path: 'applicants',
+        loadChildren: () =>
+          import('./modules/employer/applicant/applicant.module').then(
+            (m) => m.ApplicantModule
+          ),
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        loadChildren: () =>
+          import('./modules/employer/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+    ],
+  },
+  // =============== Admin ROLE ================
+  {
+    path: 'admin',
+    //canActivate: [AuthGuard, RoleGuard],
+    component: LayoutComponent,
+    data: {
+      layout: 'admin',
+      allowedRoles: ['Admin']
+    },
+    children: [
+      {
+        path: 'company',
+        loadChildren: () =>
+          import('./modules/admin/company/company.module').then(
+            (m) => m.CompanyModule
+          ),
+      },
+      {
+        path: 'job',
+        loadChildren: () =>
+          import('./modules/admin/job/job.module').then(
+            (m) => m.JobModule
+          ),
+      },
+      {
+        path: 'skill',
+        loadChildren: () =>
+          import('./modules/admin/skill/skill.module').then(
+            (m) => m.SkillModule
+          ),
+      },
+      {
+        path: 'city',
+        loadChildren: () =>
+          import('./modules/admin/city/city.module').then(
+            (m) => m.CityModule
+          ),
+      },
+      {
+        path: 'tag',
+        loadChildren: () =>
+          import('./modules/admin/tag/tag.module').then(
+            (m) => m.TagModule
+          ),
+      },
+      {
+        path: 'user',
+        loadChildren: () =>
+          import('./modules/admin/user/user.module').then(
+            (m) => m.UserModule
+          ),
+      },
+      {
+        path: '',
+        pathMatch: 'full',
+        loadChildren: () =>
+          import('./modules/admin/dashboard/dashboard.module').then(
+            (m) => m.DashboardModule
+          ),
+      },
+    ],
+  }
 ];
 
 @NgModule({

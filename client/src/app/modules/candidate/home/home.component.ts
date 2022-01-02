@@ -10,8 +10,6 @@ import { Tag } from "../../../core/models/tag.model";
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  encapsulation: ViewEncapsulation.None,
 })
 export class HomeComponent implements OnInit, OnDestroy {
   form!: FormGroup;
@@ -33,7 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.citiesSubscription = this._storeApp.select(fromStore.getAllCities).subscribe((response) => {
       this.cities = response;
     });
-    this.citiesSubscription = this._storeApp.select(fromStore.getAllTags).subscribe((response) => {
+    this.tagsAppSubscription = this._storeApp.select(fromStore.getAllTags).subscribe((response) => {
       this.tags = response;
     });
 
@@ -84,6 +82,6 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.citiesSubscription.unsubscribe();
-    this.citiesSubscription.unsubscribe();
+    this.tagsAppSubscription.unsubscribe();
   }
 }

@@ -37,32 +37,39 @@
           </div>
         </div>
         <div class="mt-6">
-          <div class="my-8">
+          <div class="my-2">
             <span class="text-xl font-bold">Job Description</span>
-            <div class="ql-editor px-0">{{ job?.data?.description }}</div>
+            <div class="ql-editor px-0" [innerHTML]="job?.data?.description"></div>
           </div>
-          <div class="my-8">
+          <div class="my-2">
             <span class="text-xl font-bold">Requirements</span>
-            <div class="ql-editor px-0">{{ job?.data?.requirements }}</div>
+            <div class="ql-editor px-0" [innerHTML]="job?.data?.requirements"></div>
           </div>
-          <div class="my-8">
+          <div class="my-2">
             <span class="text-xl font-bold">Benefits</span>
-            <div class="ql-editor px-0">{{ job?.data?.benefits }}</div>
+            <div class="ql-editor px-0" [innerHTML]="job?.data?.benefits"></div>
           </div>
         </div>
       </div>
       <div class="col-span-1">
-        <button
-          *ngIf="!appliedJob"
-          (click)="openApplyJobDialog(job?.data?.id || 0)"
-          class="py-4 w-full rounded-lg bg-indigo-700 text-white hover:bg-indigo-800">
-          Apply For Job
-        </button>
-        <button
-          *ngIf="appliedJob"
-          class="py-4 w-full rounded-lg bg-gray-300">
-          Applied Job
-        </button>
+        <div class="flex space-x-2">
+          <button
+            *ngIf="!isAppliedJob"
+            (click)="openApplyJobDialog(job?.data?.id || 0)"
+            class="py-4 w-full rounded-lg bg-indigo-700 text-white hover:bg-indigo-800">
+            Apply For Job
+          </button>
+          <button
+            *ngIf="isAppliedJob"
+            class="py-4 w-full rounded-lg bg-gray-300">
+            Applied Job
+          </button>
+          <button mat-button mat-raised-button class="">
+            <div class="text-xl">
+              <i class="fas fa-heart"></i>
+            </div>
+          </button>
+        </div>
         <div class="mt-6 py-5 px-8 bg-indigo-100 rounded-lg">
           <span class="text-xl">Job Overview</span>
           <ul class="mt-6 space-y-6">

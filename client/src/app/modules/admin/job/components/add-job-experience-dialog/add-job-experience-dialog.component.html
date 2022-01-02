@@ -1,0 +1,26 @@
+<div class="py-2">
+  <h2 mat-dialog-title>{{ titleForm }}</h2>
+
+  <form (ngSubmit)="onSubmit()" [formGroup]="form">
+    <mat-dialog-content>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input autocomplete="off" formControlName="name" matInput placeholder="Name" required>
+        <mat-error>Please provide a valid name</mat-error>
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-dialog-close mat-raised-button>Cancel</button>
+      <button
+        [disabled]="!form.valid"
+        [mat-dialog-close]="true"
+        cdkFocusInitial
+        color="primary"
+        mat-raised-button
+        type="submit">
+        {{ titleForm }}
+      </button>
+    </mat-dialog-actions>
+  </form>
+</div>

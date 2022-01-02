@@ -1,0 +1,325 @@
+<div class="pb-6 flex justify-between">
+  <span class="font-bold text-4xl">{{ title }} Job</span>
+</div>
+
+<form [formGroup]="form">
+  <div class="grid grid-cols-3 gap-6">
+    <div class="col-span-2">
+      <div class="space-y-6">
+        <!--  =========== Job Content ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Job Content</span>
+          </div>
+          <div class="px-4 py-5">
+            <div class="grid grid-cols-2 gap-x-6">
+              <div class="col-span-2">
+                <mat-form-field appearance="outline" class="w-full">
+                  <mat-label>Title</mat-label>
+                  <input
+                    matInput
+                    placeholder="Title"
+                    required
+                    formControlName="title"/>
+                  <mat-error> Please provide a valid title </mat-error>
+                </mat-form-field>
+              </div>
+              <mat-form-field appearance="outline">
+                <mat-label>Salary From</mat-label>
+                <input
+                  matInput
+                  placeholder="Salary From"
+                  type="number"
+                  min="0"
+                  max="1000000"
+                  formControlName="salaryFrom"/>
+                <mat-error> Please provide a valid salary from </mat-error>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Salary To</mat-label>
+                <input
+                  matInput
+                  placeholder="Salary To"
+                  type="number"
+                  min="0"
+                  max="1000000"
+                  formControlName="salaryTo"/>
+                <mat-error> Please provide a valid salary to </mat-error>
+              </mat-form-field>
+              <mat-checkbox
+                class="example-margin"
+                color="primary"
+                formControlName="hideSalary">
+                Wage Agreement
+              </mat-checkbox>
+              <mat-form-field appearance="outline">
+                <mat-label>Num Of Positions</mat-label>
+                <input
+                  matInput
+                  placeholder="Num Of Positions"
+                  type="number"
+                  min="1"
+                  max="1000000"
+                  required
+                  formControlName="numOfPositions"/>
+                <mat-error> Please provide a valid Num Of Positions </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <!--  =========== Job Description ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Job Description</span>
+          </div>
+          <div class="px-4 py-5">
+            <quill-editor [styles]="{height: '200px'}" formControlName="description">
+              <div quill-editor-toolbar>
+                <span class="ql-formats">
+                  <select class="ql-font">
+                    <option selected></option>
+                    <option value="serif"></option>
+                    <option value="monospace"></option>
+                  </select>
+                  <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                  <button class="ql-strike"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-color"></select>
+                  <select class="ql-background"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                  <select class="ql-align">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-link"></button>
+                  <button class="ql-image"></button>
+                </span>
+              </div>
+            </quill-editor>
+          </div>
+        </div>
+
+        <!--  =========== Job Benefits ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Job Benefits</span>
+          </div>
+          <div class="px-4 py-5">
+            <quill-editor [styles]="{height: '200px'}" formControlName="benefits">
+              <div quill-editor-toolbar>
+                <span class="ql-formats">
+                  <select class="ql-font">
+                    <option selected></option>
+                    <option value="serif"></option>
+                    <option value="monospace"></option>
+                  </select>
+                  <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                  <button class="ql-strike"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-color"></select>
+                  <select class="ql-background"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                  <select class="ql-align">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-link"></button>
+                  <button class="ql-image"></button>
+                </span>
+              </div>
+            </quill-editor>
+          </div>
+        </div>
+
+        <!--  =========== Job Requirements ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Job Requirements</span>
+          </div>
+          <div class="px-4 py-5">
+            <quill-editor [styles]="{height: '200px'}" formControlName="requirements">
+              <div quill-editor-toolbar>
+                <span class="ql-formats">
+                  <select class="ql-font">
+                    <option selected></option>
+                    <option value="serif"></option>
+                    <option value="monospace"></option>
+                  </select>
+                  <select class="ql-size">
+                    <option value="small"></option>
+                    <option selected></option>
+                    <option value="large"></option>
+                    <option value="huge"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-bold"></button>
+                  <button class="ql-italic"></button>
+                  <button class="ql-underline"></button>
+                  <button class="ql-strike"></button>
+                </span>
+                <span class="ql-formats">
+                  <select class="ql-color"></select>
+                  <select class="ql-background"></select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-list" value="ordered"></button>
+                  <button class="ql-list" value="bullet"></button>
+                  <select class="ql-align">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                  </select>
+                </span>
+                <span class="ql-formats">
+                  <button class="ql-link"></button>
+                  <button class="ql-image"></button>
+                </span>
+              </div>
+            </quill-editor>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1">
+      <div class="space-y-6">
+
+        <!--  =========== Publish ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Publish</span>
+          </div>
+          <div class="px-4 py-5">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Expiration Date</mat-label>
+              <mat-date-range-input [rangePicker]="picker" required>
+                <input matStartDate placeholder="Start date" formControlName="dateStart">
+                <input matEndDate placeholder="End date" formControlName="dateEnd">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
+            <div class="flex justify-end">
+              <button
+                (click)="onSubmit()"
+                [disabled]="!form.valid"
+                mat-button
+                mat-raised-button
+                color="primary">
+                <i class="far fa-save"></i>
+                Save Changes
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!--  =========== City ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">City</span>
+          </div>
+          <div class="px-4 py-5">
+            <select class="w-full py-3 px-2 rounded border capitalize" formControlName="cityId">
+              <option
+                *ngFor="let city of cities$ | async"
+                [value]="city.id"
+                class="capitalize">
+                {{ city.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!--  =========== Job Type ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Job Type</span>
+          </div>
+          <div class="px-4 py-5">
+            <select class="w-full py-3 px-2 rounded border capitalize" formControlName="jobTypeId">
+              <option
+                *ngFor="let jobType of jobTypes$ | async"
+                [value]="jobType.id"
+                class="capitalize">
+                {{ jobType.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!--  =========== Job Experience ============-->
+        <div class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Job Experience</span>
+          </div>
+          <div class="px-4 py-5">
+            <select class="w-full py-3 px-2 rounded border capitalize" formControlName="jobExperienceId">
+              <option
+                *ngFor="let jobExperience of jobExperiences$ | async"
+                [value]="jobExperience.id"
+                class="capitalize">
+                {{ jobExperience.name }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!--  =========== Tag ============-->
+        <div *ngIf="title ==='Edit'" class="bg-white rounded-lg shadow-lg">
+          <div class="px-4 py-3 border-b">
+            <span class="text-xl font-bold">Tags</span>
+            <button class="float-right text-2xl text-indigo-700" (click)="addTagJobDialog(form.get('id')?.value)">
+              <i class="fas fa-plus-circle"></i>
+            </button>
+          </div>
+          <div class="px-4 py-2 divide-y">
+            <div
+              *ngFor="let jobTag of jobTags"
+              (click)="addTagJobDialog(jobTag?.jobId, false, jobTag.id, jobTag?.tag?.name)"
+              class="py-3 px-2 rounded cursor-pointer hover:bg-gray-100">
+              <span>{{ jobTag?.tag?.name }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

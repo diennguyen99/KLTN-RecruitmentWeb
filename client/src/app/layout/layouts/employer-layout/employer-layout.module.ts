@@ -1,15 +1,22 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { EmployerLayoutComponent } from './employer-layout.component';
-
-
+import { SharedModule } from "../../../shared/shared.module";
+import { MaterialUiModule } from "../../../material-ui/material-ui.module";
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { RouterModule } from "@angular/router";
 
 @NgModule({
   declarations: [
+    EmployerLayoutComponent,
+    ToolbarComponent
+  ],
+  exports: [
     EmployerLayoutComponent
   ],
   imports: [
-    CommonModule
+    SharedModule,
+    MaterialUiModule,
+    RouterModule
   ]
 })
 export class EmployerLayoutModule { }

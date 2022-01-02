@@ -16,6 +16,12 @@ import { MatTableModule } from "@angular/material/table";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatCardModule } from "@angular/material/card";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatListModule } from "@angular/material/list";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatRadioModule } from "@angular/material/radio";
+
 
 const modules = [
   MatFormFieldModule,
@@ -33,7 +39,12 @@ const modules = [
   MatTableModule,
   MatMenuModule,
   MatDividerModule,
-  MatCardModule
+  MatCardModule,
+  MatSidenavModule,
+  MatListModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatRadioModule
 ]
 
 @NgModule({

@@ -13,12 +13,16 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { reducers, effects } from "./store";
+import { SharedModule } from "./shared/shared.module";
+import { MaterialUiModule } from "./material-ui/material-ui.module";
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    SharedModule,
+    MaterialUiModule,
     HttpClientModule,
     NgxSpinnerModule,
     StoreModule.forRoot({}),

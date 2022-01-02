@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <button mat-icon-button (click)="inputSideNav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <div class="w-full flex justify-between">
+      <a mat-button routerLink="/candidate" aria-label="ute-job">
+        <span class="text-4xl font-bold">
+          uteJOB
+        </span>
+      </a>
+
+      <button
+        [matMenuTriggerFor]="userMenu"
+        mat-raised-button
+        color="primary">
+        <i class="far fa-building"></i>
+        My Company
+      </button>
+      <mat-menu #userMenu="matMenu" style="padding-top: 0!important;">
+        <button mat-menu-item routerLink="/employer/company">Company</button>
+        <button mat-menu-item routerLink="/employer/job">Jobs</button>
+        <button mat-menu-item routerLink="/employer/job/create">Add Job</button>
+        <button mat-menu-item routerLink="/employer/applicants">Applicants</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
+      </mat-menu>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

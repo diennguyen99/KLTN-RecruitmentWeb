@@ -38,9 +38,9 @@ export class AddEditExperienceDialogComponent implements OnInit {
       position: ['', Validators.required],
       companyName: ['', Validators.required],
       isPresent: [false],
-      dateStart: ['', Validators.required],
+      dateStart: [new Date(), Validators.required],
       dateEnd: [new Date()],
-      description: [new Date(), Validators.required]
+      description: ['', Validators.required]
     })
   }
 

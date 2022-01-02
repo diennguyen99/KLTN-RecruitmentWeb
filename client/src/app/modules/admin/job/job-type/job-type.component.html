@@ -1,0 +1,16 @@
+<div class="px-6 py-3 bg-gray-200">
+  <i class="fas fa-home"></i>
+  <span class="ml-2 text-indigo-700">Dashboard / JobType / </span>
+  <span>All</span>
+</div>
+
+<div class="p-6">
+  <app-table
+    [title]="'Job Types'" [subtitle]="'Manage, Add or Remove Job Types here.'"
+    [data]="jobTypes && jobTypes.data" [columns]="jobTypeColumns" (onFilter)="filter($event)"
+    (onReload)="reload()" (onSort)="sort($event)"
+    (onDelete)="remove($event)" (onCreateForm)="openForm()" (onEditForm)="openForm($event)"
+    [totalCount]="jobTypes && jobTypes.totalCount" [pageSize]="jobTypes && jobTypes.pageSize"
+    (onPageChanged)="pageChanged($event)">
+  </app-table>
+</div>
