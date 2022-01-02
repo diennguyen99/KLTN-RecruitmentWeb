@@ -12,5 +12,6 @@ namespace UteJob.Application.Features.Cities.Queries.GetAllPaged
         public string Name { get; set; }
         public string Slug { get; set; }
         public bool IsShowSearch { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

@@ -105,7 +105,7 @@ namespace UteJob.Application.Features.Jobs.Commands
                     HideSalary = command.HideSalary,
                     NumOfPositions = command.NumOfPositions,
                     DateStart = command.DateStart,
-                    DateEnd = command.DateEnd
+                    DateEnd = command.DateEnd,
                 };
                 await _unitOfWork.Repository<Job>().AddAsync(job);
                 await _unitOfWork.Commit(cancellationToken);

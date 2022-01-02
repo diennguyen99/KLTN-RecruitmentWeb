@@ -45,7 +45,8 @@ namespace UteJob.Application.Features.Skills.Queries.GetAllPaged
             Expression<Func<Skill, GetAllPagedSkillsResponse>> expression = e => new GetAllPagedSkillsResponse
             {
                 Id = e.Id,
-                Name = e.Name
+                Name = e.Name,
+                CreatedOn = e.CreatedOn
             };
 
             var skillFilterSpec = new SkillFilterSpecification(request.SearchString);

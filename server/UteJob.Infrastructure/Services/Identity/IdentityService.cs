@@ -3,11 +3,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UteJob.Application.Constants;
 using UteJob.Application.Exceptions;
 using UteJob.Application.Interfaces.Services;
 using UteJob.Application.Interfaces.Services.Identity;
@@ -87,7 +85,7 @@ namespace UteJob.Infrastructure.Services.Identity
 
                 if (result.Succeeded)
                 {
-                    await _userManager.AddToRoleAsync(user, RoleConstant.Candidate.ToString());
+                    await _userManager.AddToRoleAsync(user, request.RoleName);
 
                     var verificationUri = await SendVerificationEmail(user, origin);
 

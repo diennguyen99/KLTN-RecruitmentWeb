@@ -29,5 +29,8 @@ namespace UteJob.Application.Requests.Identity
 
         [Required]
         public string PhoneNumber { get; set; }
+
+        [Required]
+        public string RoleName { get; set; }
     }
 }

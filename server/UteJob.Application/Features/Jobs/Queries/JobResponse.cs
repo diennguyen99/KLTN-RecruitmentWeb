@@ -12,6 +12,7 @@ namespace UteJob.Application.Features.Jobs.Queries
         public int Id { get; set; }
         public int CompanyId { get; set; }
         public virtual Company Company { get; set; }
+        public string CompanyName { get; set; }
         public int CityId { get; set; }
         public virtual City City { get; set; }
         public int JobTypeId { get; set; }
@@ -27,5 +28,6 @@ namespace UteJob.Application.Features.Jobs.Queries
         public int NumOfPositions { get; set; }
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

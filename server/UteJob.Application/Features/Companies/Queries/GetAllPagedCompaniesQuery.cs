@@ -50,7 +50,10 @@ namespace UteJob.Application.Features.Companies.Queries
                 Id = e.Id,
                 Name = e.Name,
                 Slug = e.Slug,
-                Logo = e.Logo
+                Logo = e.Logo,
+                Phone = e.Phone,
+                Address = e.Address,
+                CreatedOn = e.CreatedOn
             };
 
             var compantFilterSpec = new CompanyFilterSpecification(request.SearchString);

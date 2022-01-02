@@ -11,5 +11,7 @@ namespace UteJob.Application.Features.JobTypes.Queries.GetAll
         public int Id { get; set; }
 
         public string Name { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }

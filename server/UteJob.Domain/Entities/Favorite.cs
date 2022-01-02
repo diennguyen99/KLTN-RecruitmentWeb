@@ -7,8 +7,9 @@ using UteJob.Domain.Contracts;
 
 namespace UteJob.Domain.Entities
 {
-    public class Language : AuditableEntity<int>
+    public class Favorite : AuditableEntity<int>
     {
-        public string Name { get; set; }
+        public int JobId { get; set; }
+        public virtual Job Job { get; set; }
     }
 }

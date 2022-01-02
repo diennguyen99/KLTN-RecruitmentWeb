@@ -10,5 +10,6 @@ namespace UteJob.Application.Features.JobExperiences.Queries.GetAll
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public string CreatedOn { get; set; }
     }
 }

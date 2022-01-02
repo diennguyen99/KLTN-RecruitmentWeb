@@ -19,5 +19,7 @@ namespace UteJob.Domain.Contracts
         string LastModifiedBy { get; set; }
 
         DateTime? LastModifiedOn { get; set; }
+
+        bool IsDeleted { get; set; }
     }
 }

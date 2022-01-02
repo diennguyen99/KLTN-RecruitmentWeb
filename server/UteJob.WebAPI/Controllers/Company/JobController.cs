@@ -19,6 +19,13 @@ namespace UteJob.WebAPI.Controllers.Company
             return Ok(job);
         }
 
+        [HttpGet("GetJobById")]
+        public async Task<IActionResult> GetJobById(int id)
+        {
+            var job = await _mediator.Send(new GetJobByIdQuery() { Id = id });
+            return Ok(job);
+        }
+
         [HttpGet()]
         public async Task<IActionResult> GetAll(int pageNumber, int pageSize, string searchString, string orderBy = null)
         {

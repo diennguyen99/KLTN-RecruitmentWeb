@@ -47,7 +47,8 @@ namespace UteJob.Application.Features.Cities.Queries.GetAllPaged
             {
                 Id = e.Id,
                 Name = e.Name,
-                Slug = e.Slug
+                Slug = e.Slug,
+                CreatedOn = e.CreatedOn
             };
 
             var cityFilterSpec = new CityFilterSpecification(request.SearchString);

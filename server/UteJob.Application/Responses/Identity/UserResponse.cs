@@ -17,5 +17,6 @@ namespace UteJob.Application.Responses.Identity
         public bool EmailConfirmed { get; set; }
         public string PhoneNumber { get; set; }
         public string ProfilePictureDataUrl { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

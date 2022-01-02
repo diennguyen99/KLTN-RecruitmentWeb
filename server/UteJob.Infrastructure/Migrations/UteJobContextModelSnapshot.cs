@@ -169,6 +169,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("JobId")
                         .HasColumnType("int");
 
@@ -203,6 +206,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -232,6 +238,9 @@ namespace UteJob.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsShowSearch")
                         .HasColumnType("bit");
@@ -287,6 +296,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<string>("Fax")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -324,6 +336,38 @@ namespace UteJob.Infrastructure.Migrations
                     b.ToTable("Companies");
                 });
 
+            modelBuilder.Entity("UteJob.Domain.Entities.Favorite", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("JobId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(128)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobId");
+
+                    b.ToTable("Favorites");
+                });
+
             modelBuilder.Entity("UteJob.Domain.Entities.Job", b =>
                 {
                     b.Property<int>("Id")
@@ -356,6 +400,9 @@ namespace UteJob.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.Property<bool>("HideSalary")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<int>("JobExperienceId")
@@ -414,6 +461,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -428,40 +478,6 @@ namespace UteJob.Infrastructure.Migrations
                     b.ToTable("JobExperiences");
                 });
 
-            modelBuilder.Entity("UteJob.Domain.Entities.JobSkill", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("JobId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("SkillId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobId");
-
-                    b.HasIndex("SkillId");
-
-                    b.ToTable("JobSkills");
-                });
-
             modelBuilder.Entity("UteJob.Domain.Entities.JobTag", b =>
                 {
                     b.Property<int>("Id")
@@ -474,6 +490,9 @@ namespace UteJob.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<int>("JobId")
                         .HasColumnType("int");
@@ -509,6 +528,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -521,33 +543,6 @@ namespace UteJob.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("JobTypes");
-                });
-
-            modelBuilder.Entity("UteJob.Domain.Entities.Language", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("CreatedBy")
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("nvarchar(128)");
-
-                    b.Property<DateTime?>("LastModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("UteJob.Domain.Entities.ProfileEducation", b =>
@@ -568,6 +563,9 @@ namespace UteJob.Infrastructure.Migrations
 
                     b.Property<DateTime?>("DateStart")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<bool?>("IsPresent")
                         .HasColumnType("bit");
@@ -614,6 +612,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<bool?>("IsPresent")
                         .HasColumnType("bit");
 
@@ -653,6 +654,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -686,6 +690,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -718,6 +725,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -745,6 +755,9 @@ namespace UteJob.Infrastructure.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
 
@@ -771,6 +784,9 @@ namespace UteJob.Infrastructure.Migrations
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(128)");
@@ -833,6 +849,9 @@ namespace UteJob.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastModifiedBy")
@@ -977,6 +996,17 @@ namespace UteJob.Infrastructure.Migrations
                         .HasForeignKey("CityId");
                 });
 
+            modelBuilder.Entity("UteJob.Domain.Entities.Favorite", b =>
+                {
+                    b.HasOne("UteJob.Domain.Entities.Job", "Job")
+                        .WithMany()
+                        .HasForeignKey("JobId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Job");
+                });
+
             modelBuilder.Entity("UteJob.Domain.Entities.Job", b =>
                 {
                     b.HasOne("UteJob.Domain.Entities.City", "City")
@@ -1010,25 +1040,6 @@ namespace UteJob.Infrastructure.Migrations
                     b.Navigation("JobExperience");
 
                     b.Navigation("JobType");
-                });
-
-            modelBuilder.Entity("UteJob.Domain.Entities.JobSkill", b =>
-                {
-                    b.HasOne("UteJob.Domain.Entities.Job", "Job")
-                        .WithMany()
-                        .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("UteJob.Domain.Entities.Skill", "Skill")
-                        .WithMany()
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Job");
-
-                    b.Navigation("Skill");
                 });
 
             modelBuilder.Entity("UteJob.Domain.Entities.JobTag", b =>

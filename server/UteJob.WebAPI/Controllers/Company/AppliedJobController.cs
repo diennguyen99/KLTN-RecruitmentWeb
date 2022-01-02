@@ -19,6 +19,13 @@ namespace UteJob.WebAPI.Controllers.Company
             return Ok(appliedJobs);
         }
 
+        [HttpGet("GetAppliedJobOfEmployer")]
+        public async Task<IActionResult> GetAllOfEmployer(int pageNumber, int pageSize, string jobTitle = "")
+        {
+            var appliedJobs = await _mediator.Send(new GetAllPagedAppliedJobOfEmployerQuery(pageNumber, pageSize, jobTitle));
+            return Ok(appliedJobs);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(AddEditAppliedJobCommand command)
         {

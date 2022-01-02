@@ -183,6 +183,7 @@ namespace UteJob.WebAPI.Extensions
             services.AddTransient<IIdentityService, IdentityService>();
             services.AddTransient<ITokenService, TokenService>();
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddTransient<IUploadService, UploadService>();
             return services;
         }

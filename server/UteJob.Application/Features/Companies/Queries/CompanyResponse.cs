@@ -25,5 +25,7 @@ namespace UteJob.Application.Features.Companies.Queries
         public string Twitter { get; set; }
         public string Linkedin { get; set; }
         public virtual ICollection<Job> Jobs { get; set; }
+
+        public DateTime CreatedOn { get; set; }
     }
 }
