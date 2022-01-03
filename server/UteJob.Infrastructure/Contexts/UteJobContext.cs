@@ -99,6 +99,7 @@ namespace UteJob.Infrastructure.Contexts
             builder.Entity<ProfileSkill>().HasQueryFilter(p => !p.IsDeleted);
             builder.Entity<ProfileSummary>().HasQueryFilter(p => !p.IsDeleted);
             builder.Entity<JobTag>().HasQueryFilter(p => !p.IsDeleted);
+            builder.Entity<AppliedJob>().HasQueryFilter(p => !p.IsDeleted);
             builder.Entity<Favorite>().HasQueryFilter(p => !p.IsDeleted);
 
             base.OnModelCreating(builder);

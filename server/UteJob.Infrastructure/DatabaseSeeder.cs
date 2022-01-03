@@ -42,23 +42,23 @@ namespace UteJob.Infrastructure
                     await _roleManager.CreateAsync(new IdentityRole(RoleConstant.Candidate));
                 }
 
-                //var candidateUser = new UteJobUser
-                //{
-                //    FirstName = "Candidate",
-                //    LastName = "John",
-                //    Email = "candidate@gmail.com",
-                //    UserName = "candidate",
-                //    EmailConfirmed = true,
-                //    PhoneNumberConfirmed = true,
-                //    CreatedOn = DateTime.Now,
-                //    IsActive = true,
-                //};
-                //var candidateUserInDb = await _userManager.FindByEmailAsync(candidateUser.Email);
-                //if (candidateUserInDb == null)
-                //{
-                //    await _userManager.CreateAsync(candidateUser, RoleConstant.DefaultPassword);
-                //    await _userManager.AddToRoleAsync(candidateUser, RoleConstant.Candidate);
-                //}
+                var candidateUser = new UteJobUser
+                {
+                    FirstName = "Candidate",
+                    LastName = "John",
+                    Email = "candidate@gmail.com",
+                    UserName = "candidate",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
+                    CreatedOn = DateTime.Now,
+                    IsActive = true,
+                };
+                var candidateUserInDb = await _userManager.FindByEmailAsync(candidateUser.Email);
+                if (candidateUserInDb == null)
+                {
+                    await _userManager.CreateAsync(candidateUser, RoleConstant.DefaultPassword);
+                    await _userManager.AddToRoleAsync(candidateUser, RoleConstant.Candidate);
+                }
             }).GetAwaiter().GetResult();
         }
 
@@ -72,23 +72,23 @@ namespace UteJob.Infrastructure
                     await _roleManager.CreateAsync(new IdentityRole(RoleConstant.Employer));
                 }
 
-                //var employerUser = new UteJobUser
-                //{
-                //    FirstName = "Employer",
-                //    LastName = "John",
-                //    Email = "employer@gmail.com",
-                //    UserName = "candidate",
-                //    EmailConfirmed = true,
-                //    PhoneNumberConfirmed = true,
-                //    CreatedOn = DateTime.Now,
-                //    IsActive = true,
-                //};
-                //var employerUserInDb = await _userManager.FindByEmailAsync(employerUser.Email);
-                //if (employerUserInDb == null)
-                //{
-                //    await _userManager.CreateAsync(employerUser, RoleConstant.DefaultPassword);
-                //    await _userManager.AddToRoleAsync(employerUser, RoleConstant.Employer);
-                //}
+                var employerUser = new UteJobUser
+                {
+                    FirstName = "Employer",
+                    LastName = "John",
+                    Email = "employer@gmail.com",
+                    UserName = "candidate",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
+                    CreatedOn = DateTime.Now,
+                    IsActive = true,
+                };
+                var employerUserInDb = await _userManager.FindByEmailAsync(employerUser.Email);
+                if (employerUserInDb == null)
+                {
+                    await _userManager.CreateAsync(employerUser, RoleConstant.DefaultPassword);
+                    await _userManager.AddToRoleAsync(employerUser, RoleConstant.Employer);
+                }
             }).GetAwaiter().GetResult();
         }
 
@@ -102,23 +102,23 @@ namespace UteJob.Infrastructure
                     await _roleManager.CreateAsync(new IdentityRole(RoleConstant.Admin));
                 }
 
-                //var adminUser = new UteJobUser
-                //{
-                //    FirstName = "Admin",
-                //    LastName = "John",
-                //    Email = "superadmin@gmail.com",
-                //    UserName = "superadmin",
-                //    EmailConfirmed = true,
-                //    PhoneNumberConfirmed = true,
-                //    CreatedOn = DateTime.Now,
-                //    IsActive = true,
-                //};
-                //var adminUserInDb = await _userManager.FindByEmailAsync(adminUser.Email);
-                //if (adminUserInDb == null)
-                //{
-                //    await _userManager.CreateAsync(adminUser, RoleConstant.DefaultPassword);
-                //    await _userManager.AddToRoleAsync(adminUser, RoleConstant.Admin);
-                //}
+                var adminUser = new UteJobUser
+                {
+                    FirstName = "Admin",
+                    LastName = "Supper",
+                    Email = "superadmin@gmail.com",
+                    UserName = "superadmin",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
+                    CreatedOn = DateTime.Now,
+                    IsActive = true,
+                };
+                var adminUserInDb = await _userManager.FindByEmailAsync(adminUser.Email);
+                if (adminUserInDb == null)
+                {
+                    await _userManager.CreateAsync(adminUser, RoleConstant.DefaultPassword);
+                    await _userManager.AddToRoleAsync(adminUser, RoleConstant.Admin);
+                }
             }).GetAwaiter().GetResult();
         }
     }

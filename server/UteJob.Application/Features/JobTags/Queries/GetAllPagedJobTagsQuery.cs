@@ -77,6 +77,7 @@ namespace UteJob.Application.Features.JobTags.Queries
             {
                 var data = await _unitOfWork.Repository<JobTag>().Entities
                    .Specify(jobTagFilterSpec)
+                   .Where(j => j.Job.DateStart <= DateTime.Now && j.Job.DateEnd >= DateTime.Now)
                    .Select(expression)
                    .ToPaginatedListAsync(request.PageNumber, request.PageSize);
                 return data;
@@ -86,6 +87,7 @@ namespace UteJob.Application.Features.JobTags.Queries
                 var ordering = string.Join(",", request.OrderBy);
                 var data = await _unitOfWork.Repository<JobTag>().Entities
                    .Specify(jobTagFilterSpec)
+                   .Where(j => j.Job.DateStart <= DateTime.Now && j.Job.DateEnd >= DateTime.Now)
                    .OrderBy(ordering)
                    .Select(expression)
                    .ToPaginatedListAsync(request.PageNumber, request.PageSize);

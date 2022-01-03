@@ -9,6 +9,7 @@ namespace UteJob.WebAPI.Controllers.Company
     [Authorize]
     public class TagController : ApiControllerBase
     {
+        [AllowAnonymous]
         [HttpGet("GetPagedAll")]
         public async Task<IActionResult> GetPagedAll(int pageNumber, int pageSize, string searchString, string orderBy = null)
         {

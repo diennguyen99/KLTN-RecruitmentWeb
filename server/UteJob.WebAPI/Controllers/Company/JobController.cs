@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using UteJob.Application.Features.Jobs.Commands;
 using UteJob.Application.Features.Jobs.Queries;
@@ -24,6 +21,20 @@ namespace UteJob.WebAPI.Controllers.Company
         {
             var job = await _mediator.Send(new GetJobByIdQuery() { Id = id });
             return Ok(job);
+        }
+
+        [HttpGet("GetAllJobsByAdmin")]
+        public async Task<IActionResult> GetAllByAdmin(int pageNumber, int pageSize, string searchString, string orderBy = null)
+        {
+            var jobs = await _mediator.Send(new GetAllPagedJobsByAdminQuery(pageNumber, pageSize, searchString, orderBy));
+            return Ok(jobs);
+        }
+
+        [HttpGet("GetAllJobsByEmployer")]
+        public async Task<IActionResult> GetAllByEmployer(int pageNumber, int pageSize, string searchString, string orderBy = null)
+        {
+            var jobs = await _mediator.Send(new GetAllPagedJobsByEmployerQuery(pageNumber, pageSize, searchString, orderBy));
+            return Ok(jobs);
         }
 
         [HttpGet()]

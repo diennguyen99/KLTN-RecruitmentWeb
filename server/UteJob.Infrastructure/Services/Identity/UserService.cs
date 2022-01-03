@@ -26,7 +26,9 @@ namespace UteJob.Infrastructure.Services.Identity
 
         public async Task<Result<List<UserResponse>>> GetAllAsync()
         {
-            var users = await _userManager.Users.AsNoTracking().ToListAsync();
+            var users = await _userManager.Users
+                                .AsNoTracking()
+                                .ToListAsync();
             var result = _mapper.Map<List<UserResponse>>(users);
             return await Result<List<UserResponse>>.SuccessAsync(result);
         }

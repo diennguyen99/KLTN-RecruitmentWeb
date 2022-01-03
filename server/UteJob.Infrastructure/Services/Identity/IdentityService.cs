@@ -90,7 +90,7 @@ namespace UteJob.Infrastructure.Services.Identity
                     var verificationUri = await SendVerificationEmail(user, origin);
 
                     await _mailService.SendAsync(new MailRequest() {
-                        From = "mail@codewithmukesh.com", To = user.Email,
+                        From = "support@ute-job.com", To = user.Email,
                         Body = $"Please confirm your account by <a href='{verificationUri}'>clicking here</a>.",
                         Subject = "Confirm Registration"
                     });

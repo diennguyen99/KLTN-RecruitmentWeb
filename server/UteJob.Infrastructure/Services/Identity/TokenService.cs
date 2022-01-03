@@ -109,6 +109,7 @@ namespace UteJob.Infrastructure.Services.Identity
             {
                 new(ClaimTypes.NameIdentifier, user.Id),
                 new(ClaimTypes.Email, user.Email),
+                new("fullName", $"{user.FirstName} {user.LastName}"),
                 new(ClaimTypes.Name, user.FirstName),
                 new(ClaimTypes.Surname, user.LastName),
                 new(ClaimTypes.MobilePhone, user.PhoneNumber ?? string.Empty)

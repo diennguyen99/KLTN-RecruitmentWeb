@@ -42,6 +42,7 @@ namespace UteJob.Infrastructure.Migrations
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RefreshTokenExpiryTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -74,7 +75,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -92,7 +94,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -109,7 +112,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -126,28 +130,12 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_JobTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Languages",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Languages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -164,7 +152,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -186,7 +175,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -208,7 +198,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -225,7 +216,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -242,7 +234,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -260,7 +253,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -397,7 +391,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -421,7 +416,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -458,7 +454,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -496,13 +493,14 @@ namespace UteJob.Infrastructure.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     MyCVOnline = table.Column<bool>(type: "bit", nullable: false),
-                    CVId = table.Column<int>(type: "int", nullable: false),
+                    CVId = table.Column<int>(type: "int", nullable: true),
                     JobId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -512,7 +510,7 @@ namespace UteJob.Infrastructure.Migrations
                         column: x => x.CVId,
                         principalTable: "CVs",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_AppliedJobs_Jobs_JobId",
                         column: x => x.JobId,
@@ -522,31 +520,25 @@ namespace UteJob.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "JobSkills",
+                name: "Favorites",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     JobId = table.Column<int>(type: "int", nullable: false),
-                    SkillId = table.Column<int>(type: "int", nullable: false),
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_JobSkills", x => x.Id);
+                    table.PrimaryKey("PK_Favorites", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_JobSkills_Jobs_JobId",
+                        name: "FK_Favorites_Jobs_JobId",
                         column: x => x.JobId,
                         principalTable: "Jobs",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_JobSkills_Skills_SkillId",
-                        column: x => x.SkillId,
-                        principalTable: "Skills",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -562,7 +554,8 @@ namespace UteJob.Infrastructure.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
                     CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(128)", nullable: true),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -636,6 +629,11 @@ namespace UteJob.Infrastructure.Migrations
                 column: "CityId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Favorites_JobId",
+                table: "Favorites",
+                column: "JobId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Jobs_CityId",
                 table: "Jobs",
                 column: "CityId");
@@ -654,16 +652,6 @@ namespace UteJob.Infrastructure.Migrations
                 name: "IX_Jobs_JobTypeId",
                 table: "Jobs",
                 column: "JobTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_JobSkills_JobId",
-                table: "JobSkills",
-                column: "JobId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_JobSkills_SkillId",
-                table: "JobSkills",
-                column: "SkillId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_JobTags_JobId",
@@ -702,13 +690,10 @@ namespace UteJob.Infrastructure.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "JobSkills");
+                name: "Favorites");
 
             migrationBuilder.DropTable(
                 name: "JobTags");
-
-            migrationBuilder.DropTable(
-                name: "Languages");
 
             migrationBuilder.DropTable(
                 name: "ProfileEducations");
