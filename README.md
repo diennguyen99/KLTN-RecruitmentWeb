@@ -1,7 +1,7 @@
 <p align="center">
   <h3 align="center">KLTN / Recruitment Web
   <p align="center">
-    Built with ASP.NET Core 5.0 WebAPI & Angular 12
+    Built with ASP.NET Core 5.0 WebAPI & Angular 13
   </p>
 </p>
 
