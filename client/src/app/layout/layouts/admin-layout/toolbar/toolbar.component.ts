@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from "@angular/material/sidenav";
+import { AuthService } from "../../../../core/services";
 
 @Component({
   selector: 'app-toolbar',
@@ -9,12 +10,12 @@ export class ToolbarComponent implements OnInit {
 
   @Input() inputSideNav!: MatSidenav;
 
-  constructor() { }
+  constructor(private readonly _authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onLogout() {
-    console.log('logout');
+    this._authService.logout();
   }
 }

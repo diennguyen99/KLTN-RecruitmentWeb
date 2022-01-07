@@ -28,6 +28,6 @@ export class JobService {
       params = params.append('orderBy', jobParams.orderBy.toString());
     }
 
-    return this._http.get<PaginatedResult<Job>>(this.baseUrl + 'Job', { params })
+    return this._http.get<PaginatedResult<Job>>(this.baseUrl + 'Job/GetAllJobsByAdmin', { params })
   }
 }

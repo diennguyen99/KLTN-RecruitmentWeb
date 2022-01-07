@@ -22,6 +22,7 @@ import { AddEditSkillDialogComponent } from './components/add-edit-skill-dialog/
 import { AddEditSummaryDialogComponent } from './components/add-edit-summary-dialog/add-edit-summary-dialog.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { AppliedJobComponent } from './applied-job/applied-job.component';
+import { FavouriteComponent } from './favourite/favourite.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AppliedJobComponent } from './applied-job/applied-job.component';
     AddEditSkillDialogComponent,
     AddEditSummaryDialogComponent,
     ChangePasswordComponent,
-    AppliedJobComponent
+    AppliedJobComponent,
+    FavouriteComponent
   ],
   imports: [
     RouterModule.forChild(accountRoutes),

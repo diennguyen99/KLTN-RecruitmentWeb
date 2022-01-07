@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ResumeComponent } from "./resume/resume.component";
 import { ChangePasswordComponent } from "./change-password/change-password.component";
 import { AppliedJobComponent } from "./applied-job/applied-job.component";
+import { FavouriteComponent } from "./favourite/favourite.component";
 
 export const accountRoutes: Route[] = [
   {
@@ -21,6 +22,10 @@ export const accountRoutes: Route[] = [
       {
         path: 'applied-job',
         component: AppliedJobComponent,
+      },
+      {
+        path: 'favourite',
+        component: FavouriteComponent,
       },
       {
         path: 'change-password',

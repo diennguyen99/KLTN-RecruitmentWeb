@@ -5,10 +5,11 @@ import * as fromStore from "../../../store";
 
 @Component({
   selector: 'app-welcome',
-  templateUrl: './welcome.component.html',
-  styleUrls: ['./welcome.component.scss'],
+  templateUrl: './welcome.component.html'
 })
 export class WelcomeComponent implements OnInit {
+
+  fullName!: string;
 
   constructor(
     private readonly _authService: AuthService,
@@ -16,6 +17,7 @@ export class WelcomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.fullName = this._authService.getFullName;
   }
 
   logout(): void {

@@ -1,0 +1,44 @@
+<div class="py-4 mb-4 bg-white px-4 rounded-lg shadow-lg">
+  <span class="text-3xl text-indigo-700 font-bold">Favourite Job</span>
+</div>
+<div class="space-y-4">
+  <div *ngFor="let favouriteJob of favouriteJobs" class="border p-5 shadow-lg rounded-lg bg-white">
+<!--    <div class="flex space-x-4">-->
+<!--      <img-->
+<!--        class="h-28 w-28 rounded-full"-->
+<!--        src="{{ favouriteJob?.company?.logo}}"-->
+<!--        alt="company">-->
+<!--      <div class="flex-auto space-y-2">-->
+<!--        <a-->
+<!--          routerLink="/candidate/jobs/{{ favouriteJob?.job?.slug }}"-->
+<!--          class="text-xl font-bold hover:text-indigo-700 truncate capitalize">-->
+<!--          {{ favouriteJob?.job?.title }}-->
+<!--        </a>-->
+<!--        <div class="flex space-x-4">-->
+<!--          <div class="flex items-center space-x-2">-->
+<!--            <i class="far fa-clock"></i>-->
+<!--            <span class="capitalize">{{ favouriteJob?.createdOn | date: 'dd/MM/yyyy' }}</span>-->
+<!--          </div>-->
+<!--          <div class="flex items-center space-x-2">-->
+<!--            <i class="far fa-building"></i>-->
+<!--            <span class="capitalize">{{ favouriteJob?.company?.name }}</span>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="text-base text-indigo-700 font-bold space-x-1">-->
+<!--        <i class="fas fa-money-bill"></i>-->
+<!--        <span *ngIf="favouriteJob?.job?.hideSalary">Negotiate</span>-->
+<!--        <span *ngIf="!favouriteJob?.job?.hideSalary">-->
+<!--        {{ favouriteJob?.job?.salaryFrom | currency:'USD' }} - -->
+<!--          {{ favouriteJob?.job?.salaryTo | currency:'USD'}}-->
+<!--      </span>-->
+<!--      </div>-->
+<!--    </div>-->
+  </div>
+  <mat-paginator
+    [length]="totalCount"
+    [pageSize]="pageSize"
+    (page)="onPaginateChange($event)"
+    aria-label="Select page">
+  </mat-paginator>
+</div>

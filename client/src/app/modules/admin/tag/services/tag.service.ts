@@ -28,7 +28,7 @@ export class TagService {
       params = params.append('orderBy', tagParams.orderBy.toString());
     }
 
-    return this._http.get<PaginatedResult<Tag>>(this.baseUrl + 'Tag', { params })
+    return this._http.get<PaginatedResult<Tag>>(this.baseUrl + 'Tag/GetPagedAll', { params })
   }
 
   deleteTag(id: number): Observable<Result<any>> {

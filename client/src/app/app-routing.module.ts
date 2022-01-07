@@ -1,8 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component';
-import {AuthGuard} from "./core/guards/auth.guard";
-import {RoleGuard} from "./core/guards/role.guard";
+import { AuthGuard } from "./core/guards/auth.guard";
+import { RoleGuard } from "./core/guards/role.guard";
+import { CompanyGuard } from "./core/guards/company.guard";
 
 const routes: Routes = [
   {
@@ -12,6 +13,13 @@ const routes: Routes = [
       layout: 'auth',
     },
     children: [
+      {
+        path: 'confirm-email',
+        loadChildren: () =>
+          import('./modules/auth/confirm-email/confirm-email.module').then(
+            (m) => m.ConfirmEmailModule
+          ),
+      },
       {
         path: 'sign-up',
         loadChildren: () =>
@@ -54,11 +62,11 @@ const routes: Routes = [
   // =============== Candidate ROLE ================
   {
     path: 'candidate',
-    //canActivate: [AuthGuard, RoleGuard],
+    canActivate: [AuthGuard, RoleGuard],
     component: LayoutComponent,
     data: {
       layout: 'candidate',
-      allowedRoles: ['Candidate']
+      allowedRoles: ['Candidate', 'Employer', 'Admin']
     },
     children: [
       {
@@ -102,7 +110,7 @@ const routes: Routes = [
   // =============== Employer ROLE ================
   {
     path: 'employer',
-    //canActivate: [AuthGuard, RoleGuard],
+    canActivate: [AuthGuard, RoleGuard],
     component: LayoutComponent,
     data: {
       layout: 'employer',
@@ -118,6 +126,7 @@ const routes: Routes = [
       },
       {
         path: 'job',
+        canActivate: [CompanyGuard],
         loadChildren: () =>
           import('./modules/employer/job/job.module').then(
             (m) => m.JobModule
@@ -125,6 +134,7 @@ const routes: Routes = [
       },
       {
         path: 'applicants',
+        canActivate: [CompanyGuard],
         loadChildren: () =>
           import('./modules/employer/applicant/applicant.module').then(
             (m) => m.ApplicantModule
@@ -143,7 +153,7 @@ const routes: Routes = [
   // =============== Admin ROLE ================
   {
     path: 'admin',
-    //canActivate: [AuthGuard, RoleGuard],
+    canActivate: [AuthGuard, RoleGuard],
     component: LayoutComponent,
     data: {
       layout: 'admin',

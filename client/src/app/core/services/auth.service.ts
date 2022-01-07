@@ -9,6 +9,7 @@ import { Result } from '../models/wrappers/Result';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import {ConfirmEmailComponent} from "../../modules/auth/confirm-email/confirm-email.component";
 
 @Injectable()
 export class AuthService {
@@ -161,5 +162,9 @@ export class AuthService {
 
   register(data: any): Observable<Result<any>> {
     return this.http.post<Result<any>>(this.baseUrl + 'Identity/register', data );
+  }
+
+  confirmEmail(userId: string, code: any): Observable<Result<any>> {
+    return this.http.get<Result<any>>(this.baseUrl + `identity/confirm-email/?userId=${userId}&code=${code}`)
   }
 }

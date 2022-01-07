@@ -20,7 +20,7 @@ export class RoleGuard implements CanActivate {
 
     if (!isAuthorized) {
       this._toastrService.warning("You are not authorized to access the resource");
-      this._router.navigateByUrl('access-denial').then(r => console.log(r));
+      this._router.navigateByUrl('/home');
     }
 
     return isAuthorized;

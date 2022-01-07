@@ -36,7 +36,7 @@ export class CompanyComponent implements OnInit {
       email: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
-      logo: ['', Validators.required],
+      logo: [''],
       description: ['', Validators.required],
       website: ['', Validators.required],
       establishedIn: ['', Validators.required],
@@ -71,6 +71,7 @@ export class CompanyComponent implements OnInit {
     }
     formData.append('id', this.form.get('id')?.value ?? 0);
     formData.append('name', this.form.get('name')?.value);
+    formData.append('slug', 'company-' + Math.floor(Math.random() * (9999 - 1000)) + 1000);
     formData.append('email', this.form.get('email')?.value);
     formData.append('phone', this.form.get('phone')?.value);
     formData.append('address', this.form.get('address')?.value);

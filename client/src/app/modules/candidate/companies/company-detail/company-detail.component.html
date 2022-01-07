@@ -37,9 +37,7 @@
           <!-- ===== About Company ===== -->
           <div>
             <span class="text-xl font-bold">About Company</span>
-            <div class="ql-editor px-0">
-              {{ company?.data?.description }}
-            </div>
+            <div class="ql-editor px-0" [innerHTML]="company?.data?.description"></div>
           </div>
 
           <!-- ===== Jobs At Company ===== -->
@@ -135,11 +133,11 @@
             </div>
 
             <a
-              href="{{ company?.data?.website || 'https://github.com/diennguyen99/KLTN-RecruitmentWeb' }}"
+              href="{{ company?.data?.website }}"
               target="_blank"
               class="block py-4 bg-indigo-700 rounded-lg">
-              <div class="truncate px-4 text-white">
-                {{ company?.data?.website || 'https://github.com/diennguyen99/KLTN-RecruitmentWeb' }}
+              <div class="truncate px-4 text-white text-center">
+                {{ company?.data?.website }}
               </div>
             </a>
           </div>

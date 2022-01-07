@@ -6,6 +6,7 @@ import { UserService } from "./user.service";
 import { TagService } from "./tag.service";
 import { JobTypeService } from "./job-type.service";
 import { JobExperienceService } from "./job-experience.service";
+import { CompanyService } from "./company.service";
 
 export const services: any[] = [
   AuthService,
@@ -15,7 +16,8 @@ export const services: any[] = [
   UserService,
   TagService,
   JobTypeService,
-  JobExperienceService
+  JobExperienceService,
+  CompanyService
 ];
 
 export * from "./auth.service";
@@ -26,3 +28,4 @@ export * from "./user.service";
 export * from './tag.service';
 export * from './job-type.service';
 export * from './job-experience.service';
+export * from './company.service';
