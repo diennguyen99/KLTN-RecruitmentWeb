@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UteJob.Domain.Contracts;
+﻿using UteJob.Domain.Contracts;
 
 namespace UteJob.Domain.Entities
 {

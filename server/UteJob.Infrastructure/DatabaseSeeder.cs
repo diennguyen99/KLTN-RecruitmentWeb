@@ -32,36 +32,6 @@ namespace UteJob.Infrastructure
             _db.SaveChanges();
         }
 
-        private void AddCandidate()
-        {
-            Task.Run(async () =>
-            {
-                var candidateRoleInDb = await _roleManager.FindByNameAsync(RoleConstant.Candidate);
-                if (candidateRoleInDb == null)
-                {
-                    await _roleManager.CreateAsync(new IdentityRole(RoleConstant.Candidate));
-                }
-
-                var candidateUser = new UteJobUser
-                {
-                    FirstName = "Candidate",
-                    LastName = "John",
-                    Email = "candidate@gmail.com",
-                    UserName = "candidate",
-                    EmailConfirmed = true,
-                    PhoneNumberConfirmed = true,
-                    CreatedOn = DateTime.Now,
-                    IsActive = true,
-                };
-                var candidateUserInDb = await _userManager.FindByEmailAsync(candidateUser.Email);
-                if (candidateUserInDb == null)
-                {
-                    await _userManager.CreateAsync(candidateUser, RoleConstant.DefaultPassword);
-                    await _userManager.AddToRoleAsync(candidateUser, RoleConstant.Candidate);
-                }
-            }).GetAwaiter().GetResult();
-        }
-
         private void AddEmployer()
         {
             Task.Run(async () =>
@@ -77,7 +47,7 @@ namespace UteJob.Infrastructure
                     FirstName = "Employer",
                     LastName = "John",
                     Email = "employer@gmail.com",
-                    UserName = "candidate",
+                    UserName = "employer",
                     EmailConfirmed = true,
                     PhoneNumberConfirmed = true,
                     CreatedOn = DateTime.Now,
@@ -118,6 +88,36 @@ namespace UteJob.Infrastructure
                 {
                     await _userManager.CreateAsync(adminUser, RoleConstant.DefaultPassword);
                     await _userManager.AddToRoleAsync(adminUser, RoleConstant.Admin);
+                }
+            }).GetAwaiter().GetResult();
+        }
+
+        private void AddCandidate()
+        {
+            Task.Run(async () =>
+            {
+                var candidateRoleInDb = await _roleManager.FindByNameAsync(RoleConstant.Candidate);
+                if (candidateRoleInDb == null)
+                {
+                    await _roleManager.CreateAsync(new IdentityRole(RoleConstant.Candidate));
+                }
+
+                var candidateUser = new UteJobUser
+                {
+                    FirstName = "Candidate",
+                    LastName = "John",
+                    Email = "candidate@gmail.com",
+                    UserName = "candidate",
+                    EmailConfirmed = true,
+                    PhoneNumberConfirmed = true,
+                    CreatedOn = DateTime.Now,
+                    IsActive = true,
+                };
+                var candidateUserInDb = await _userManager.FindByEmailAsync(candidateUser.Email);
+                if (candidateUserInDb == null)
+                {
+                    await _userManager.CreateAsync(candidateUser, RoleConstant.DefaultPassword);
+                    await _userManager.AddToRoleAsync(candidateUser, RoleConstant.Candidate);
                 }
             }).GetAwaiter().GetResult();
         }
